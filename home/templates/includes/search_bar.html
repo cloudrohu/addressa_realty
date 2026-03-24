@@ -1,0 +1,156 @@
+{% load static %}
+
+<style>
+.custom-round{border-radius:6px}
+.custom-round-lg{border-radius:12px}
+
+.hero-gradient{
+  background:linear-gradient(180deg,#1e1b4b 0%,#312e81 100%);
+}
+
+@media (min-width:768px){
+.stat-divider{
+  width:1px;
+  height:40px;
+  background:rgba(255,255,255,.2)
+}
+}
+</style>
+
+<section class="relative min-h-[60vh] flex items-center justify-center px-4 py-8 overflow-hidden">
+
+    <!-- Background -->
+    <div class="absolute inset-0 z-0">
+     <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=1600" class="w-full h-full object-cover scale-110">
+         <div class="absolute inset-0 bg-black/60"></div>
+         <div class="absolute inset-0 bg-gradient-to-b from-black/70 via-indigo-900/60 to-black/90"></div>
+    </div>
+
+      <div class="relative z-10 w-full max-w-xl md:max-w-5xl text-center">
+
+      <p class="text-yellow-400 text-sm md:text-base font-semibold tracking-wider uppercase mb-3">
+        Homes Crafted For Modern Living
+      </p>
+
+      <h1 class="text-white text-4xl md:text-4xl font-extrabold leading-tight mb-2">
+        Discover A Place 
+        <span class="bg-gradient-to-r from-yellow-400 to-orange-500 bg-clip-text text-transparent">
+          You'll Truly Love
+        </span>
+      </h1>
+
+      <p class="text-gray-300 max-w-2xl mx-auto text-sm md:text-lg p-1 mb-2">
+        Verified properties. Transparent pricing. Hassle-free booking.
+      </p>
+
+        <!-- Card -->
+        <div class="bg-white/10 backdrop-blur-xl border border-white/20 rounded-3xl p-4 md:p-6 shadow-2xl pt-4 ">
+
+            <!-- Toggle -->
+            <div class="flex justify-center mb-4">
+              <div class="bg-indigo-950/70 p-1 rounded-full flex">
+
+              <button type="button" onclick="toggleTab('buy',this)" class="tab-btn px-6 py-1.5 rounded-full text-sm font-bold bg-white text-indigo-900 transition-all">
+                 Buy
+              </button>
+
+              <button type="button" onclick="toggleTab('rent',this)" class="tab-btn px-6 py-1.5 rounded-full text-sm font-bold text-white hover:bg-white/10 transition-all">
+                 Rent
+              </button>
+
+              </div>
+            </div>
+
+               <form id="buyForm" method="GET" action="{% url 'search_projects' %}" class="search-form group relative flex flex-col sm:flex-row items-stretch bg-white rounded-2xl sm:rounded-full overflow-hidden shadow-xl">
+
+                <input type="hidden" name="type" value="buy">
+
+                <div class="relative flex-1">
+                  <span class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">
+                    <i class="fas fa-map-marker-alt text-sm"></i>
+                  </span>
+
+                  <input required type="text" name="q" placeholder="Search Projects, Localities or Landmarks" class="w-full pl-10 pr-4 py-3 sm:py-4 text-sm md:text-base focus:outline-none">
+                </div>
+
+                <button type="submit" class="bg-gradient-to-r from-indigo-600 to-indigo-700 text-white px-8 py-3 font-semibold">
+                  <i class="fas fa-search mr-2"></i>
+                  <span class="hidden sm:inline">Search</span>
+                </button>
+              </form>
+
+              <form id="rentForm" method="GET" action="{% url 'rent_list' %}" class="search-form hidden group relative flex flex-col sm:flex-row items-stretch bg-white rounded-2xl sm:rounded-full overflow-hidden shadow-xl">
+
+                <input type="hidden" name="type" value="rent">
+
+                <div class="relative flex-1">
+                  <span class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">
+                    <i class="fas fa-home text-sm"></i>
+                  </span>
+
+                  <input required type="text" name="q" placeholder="Search Rentals, PG or Co-Living Spaces" class="w-full pl-10 pr-4 py-3 sm:py-4 text-sm md:text-base focus:outline-none">
+                </div>
+
+                <button type="submit" class="bg-gradient-to-r from-indigo-600 to-indigo-700 text-white px-8 py-3 font-semibold">
+                  <i class="fas fa-search mr-2"></i>
+                  <span class="hidden sm:inline">Search</span>
+                </button>
+              </form>
+
+        </div>
+
+        <div class="mt-8 flex justify-between text-white text-center text-xs md:text-sm">
+
+        {% for item in impactmetric %}
+        <div>
+            <div class="text-yellow-400 text-xl mb-1">
+                <i class="{{ item.icon }}"></i>
+            </div>
+            <div class="font-bold text-lg">{{ item.value }}</div>
+            <p class="opacity-80 uppercase tracking-wider text-[10px]">
+                {{ item.title }}
+            </p>
+        </div>
+        {% endfor %}
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= SCRIPT ================= -->
+
+<script>
+let currentType = "buy";
+
+function toggleTab(type, btn){
+
+  if(currentType === type) return;
+
+  currentType = type;
+
+  // Button UI change
+  document.querySelectorAll(".tab-btn").forEach(b=>{
+    b.classList.remove("bg-white","text-indigo-900");
+    b.classList.add("text-white");
+  });
+
+  btn.classList.add("bg-white","text-indigo-900");
+  btn.classList.remove("text-white");
+
+  // Form switching
+  const buyForm = document.getElementById("buyForm");
+  const rentForm = document.getElementById("rentForm");
+
+  if(type === "rent"){
+    buyForm.classList.add("hidden");
+    rentForm.classList.remove("hidden");
+  } else {
+    rentForm.classList.add("hidden");
+    buyForm.classList.remove("hidden");
+  }
+}
+
+</script>
+

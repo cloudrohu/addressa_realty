@@ -1,0 +1,174 @@
+{% load static %}
+
+<!-- ================= HEADER START ================= -->
+<header class="w-full bg-white border-b border-gray-200">
+  <div class="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
+
+    <!-- Logo -->
+    <div class="flex items-center space-x-2">
+      <img src="https://frpl.in/wp-content/uploads/al_opt_content/IMAGE/frpl.in/wp-content/uploads/2022/04/logo.png?bv_host=frpl.in&bv-resized-infos=bv_resized_mobile%3A202%2A37%3Bbv_resized_ipad%3A202%2A37%3Bbv_resized_desktop%3A202%2A37" alt="Logo" class="h-8">
+   
+    </div>
+
+    <!-- NAVIGATION -->
+    <nav class="hidden lg:flex items-center gap-3 text-[15px] font-medium text-gray-700">
+
+      <a href="#" class="hover:text-black transition">Home</a>
+      <a href="#" class="hover:text-black transition">About</a>
+      <a href="#" class="hover:text-black transition">Services</a>
+
+      <!-- SPACES DROPDOWN -->
+      <div class="relative group">
+
+        <button class="flex items-center gap-1 hover:text-black transition">
+          Spaces
+          <i class="fa-solid fa-chevron-down text-xs"></i>
+        </button>
+
+        <!-- DROPDOWN -->
+        <div class="absolute left-0 mt-5 w-56 bg-white shadow-xl border border-gray-100 rounded-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition duration-300">
+
+          <a href="#" class="block px-5 py-3 hover:bg-gray-50">
+            Office Spaces
+          </a>
+
+          <a href="#" class="block px-5 py-3 hover:bg-gray-50">
+            Coworking Spaces
+          </a>
+
+          <a href="#" class="block px-5 py-3 hover:bg-gray-50">
+            Retail Spaces
+          </a>
+
+          <a href="#" class="block px-5 py-3 hover:bg-gray-50">
+            Managed Offices
+          </a>
+
+          <a href="#" class="block px-5 py-3 hover:bg-gray-50">
+            Virtual Offices
+          </a>
+
+        </div>
+
+      </div>
+
+      <a href="#" class="hover:text-black transition">Career</a>
+      <a href="#" class="hover:text-black transition">Investment</a>
+      <a href="#" class="hover:text-black transition">Landlords</a>
+      <a href="#" class="hover:text-black transition">Resources</a>
+      <a href="#" class="hover:text-black transition">Contact</a>
+
+    </nav>
+
+    <!-- Right Icons -->
+    <div class="flex items-center space-x-6">
+
+      <!-- Search -->
+      <button class="text-gray-700 hover:text-black">
+        <i class="fa-solid fa-magnifying-glass text-lg"></i>
+      </button>
+
+      <!-- Menu -->
+      <button class="text-gray-700 hover:text-black">
+        <i class="fa-solid fa-bars text-xl"></i>
+      </button>
+
+    </div>
+
+  </div>
+</header>
+<!-- ================= HEADER END ================= -->
+
+
+<div id="mobileDrawer" class="fixed top-0 right-0 w-[85%] sm:w-80 h-full bg-white shadow-2xl translate-x-full transition-transform duration-300 z-[999] flex flex-col">
+
+  <!-- LOGO -->
+  <div class="flex items-center justify-between px-5 py-4 border-b">
+
+    <div class="p-1 border-b">
+      <form action="{% url 'search_projects' %}" method="get" class="relative w-full lg:hidden">
+
+        <input name="q" placeholder="Search by location, project or developer" class="w-full py-2.5 pl-11 pr-11 rounded-full border border-gray-300 focus:ring-2 focus:ring-orange-500 focus:outline-none shadow-sm text-sm">
+
+        <!-- Location Icon -->
+        <i class="fa-solid fa-location-dot absolute left-4 top-1/2 -translate-y-1/2 text-gray-400"></i>
+
+        <!-- Search Button -->
+        <button class="absolute right-4 top-1/2 -translate-y-1/2 text-gray-500 hover:text-orange-600">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+
+      </form>
+    </div>
+
+    <button id="closeMenu" class="text-3xl text-gray-500">&times;</button>
+  </div>
+
+  <!-- MENU -->
+  <nav class="flex-1 overflow-y-auto">
+
+    <a class="flex items-center gap-3 px-5 py-3 border-b" href="/">
+      <i class="fa-solid fa-house "></i> Home
+    </a>
+
+    <a class="flex items-center gap-3 px-5 py-4 border-b" href="{% url 'search_projects' %}">
+      <i class="fa-solid fa-building "></i> Projects
+    </a>
+
+    <a class="flex items-center gap-3 px-5 py-4 border-b" href="{% url 'calculator' %}">
+      <i class="fa-solid fa-calculator "></i> Calculator
+    </a>
+
+    <a class="flex items-center gap-3 px-5 py-4 border-b" href="{% url 'blog:blog_list' %}">
+      <i class="fa-solid fa-pen-nib "></i> Blogs
+    </a>
+
+    <a class="flex items-center gap-3 px-5 py-4 border-b" href="{% url 'about' %}">
+      <i class="fa-solid fa-circle-info "></i> About
+    </a>
+
+    <a class="flex items-center gap-3 px-5 py-4 border-b" href="{% url 'contact' %}">
+      <i class="fa-solid fa-phone "></i> Contact
+    </a>
+
+  </nav>
+
+
+  <div class="p-4 border-t bg-white space-y-3">
+
+    <!-- ENQUIRE -->
+    <a href="{% url 'contact' %}" class="block text-center py-2 rounded-lg text-white font-semibold shadow-sm" style="background:{{ settings_obj.button_color }}">
+      List your property
+    </a>
+
+    <!-- WHATSAPP -->
+    <a href="https://wa.me/{{ settings_obj.whatsapp }}" target="_blank" class="flex items-center justify-center gap-2 border rounded-lg py-1 text-green-600 font-semibold hover:bg-green-50 transition">
+      <i class="fa-brands fa-whatsapp text-xl"></i>
+      WhatsApp Us
+    </a>
+
+  </div>
+
+
+</div>
+
+<div id="drawerOverlay" class="fixed inset-0 bg-black/60 hidden z-[998]"></div>
+
+<script>
+  const openMenu = document.getElementById("openMenu");
+  const closeMenu = document.getElementById("closeMenu");
+  const drawer = document.getElementById("mobileDrawer");
+  const overlay = document.getElementById("drawerOverlay");
+
+  openMenu.onclick = () => {
+    drawer.classList.remove("translate-x-full");
+    overlay.classList.remove("hidden");
+  };
+
+  closeMenu.onclick = () => {
+    drawer.classList.add("translate-x-full");
+    overlay.classList.add("hidden");
+  };
+
+  overlay.onclick = closeMenu.onclick;
+</script>

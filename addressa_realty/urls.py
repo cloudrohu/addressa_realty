@@ -1,0 +1,36 @@
+# addressa_realty/urls.py
+
+from django.contrib import admin
+from django.urls import path, include 
+from django.conf import settings 
+from django.conf.urls.static import static 
+from django.contrib.sitemaps.views import sitemap 
+
+# Import sitemaps from their modular locations
+from projects.sitemaps import ProjectSitemap 
+from properties.sitemaps import PropertySitemap, BlogSitemap, StaticSitemap 
+
+from projects .views import *   
+
+
+# Define the dictionary of sitemaps
+sitemaps = {
+    'static': StaticSitemap,
+    'properties': PropertySitemap,
+    'projects': ProjectSitemap, 
+    'blog': BlogSitemap,
+}
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('', include('home.urls')),   # 👈 YAHIN SE home-contact aayega
+    path('', include('utility.urls')),
+    path('rent/', include('rent.urls')),
+    path('projects/', include('projects.urls')),
+    path('properties/', include('properties.urls')),
+    path('accounts/', include('user.urls')),
+    path('blog/', include('blog.urls')),
+    path("ckeditor5/", include("django_ckeditor_5.urls")),
+]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
