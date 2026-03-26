@@ -5,1441 +5,851 @@
 <main>
 
 <!-- ======================= FEATURE PROJECTS ======================= -->
-  <section class="bg-gray-100 py-14" data-aos="fade-up">
-    <div class="max-w-7xl mx-auto px-6">
+<section class="bg-[#f4f4f4] py-24 relative overflow-hidden">
 
-    <!-- Heading -->
-    <div class="text-center mb-12">
-      <h2 class="text-4xl font-bold text-gray-900">
-        Featured <span class="text-[#c6a16e]">Projects</span>
+  <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-20 items-center px-6 lg:px-8">
+
+      <!-- LEFT IMAGE AREA -->
+      <div class="relative group">
+
+          <!-- Outline Shape -->
+          <div class="absolute -left-14 top-20 w-20 h-48 border-2 border-orange-500 rounded-full opacity-70"></div>
+
+          <!-- Teal Shape -->
+          <div class="absolute -left-8 top-40 w-24 h-36 bg-[#26A496] rounded-full opacity-80"></div>
+
+          <!-- Image -->
+          <div class="relative overflow-hidden shadow-xl">
+
+              <img src="https://frpl.in/wp-content/uploads/2024/12/home-page-01-new.webp"  class="w-full h-[440px] object-cover transition duration-700 group-hover:scale-110">
+
+              <!-- Gradient Overlay -->
+              <div class="absolute inset-0 bg-gradient-to-t from-[#f15a29]/80 via-[#f15a29]/40 to-transparent"></div>
+
+          </div>
+
+      </div>
+
+
+      <!-- RIGHT CONTENT -->
+      <div class="text-center lg:text-left">
+
+      <h2 class="text-4xl lg:text-5xl font-bold text-teal-600 leading-tight mb-6">
+        Amazing Properties.<br>
+        Unmatched Deals.<br>
+        One Source.
       </h2>
-      <p class="text-gray-600 mt-2">
-        Discover our handpicked premium developments
+
+      <p class="text-orange-500 text-lg font-semibold mb-6 tracking-wide">
+        Property That Adds Value Intelligently Crafted.<br>
+        Unbeatable Location.
       </p>
+
+      <p class="text-gray-600 leading-relaxed max-w-xl mb-10">
+        Driven by innovation and powered by market expertise, we deliver best-in-class commercial real estate solutions designed to help our clients succeed in every business venture.
+      </p>
+
+
+      <!-- BUTTON -->
+      <a href="#" class="inline-flex items-center gap-4 bg-[#a6472a] text-white px-6 py-2.5 rounded-full font-semibold hover:bg-[#8e3b23] transition-all duration-300 hover:gap-6">
+
+        <span class="w-6 h-[2px] bg-white inline-block"></span>
+          READ MORE
+      </a>
+
     </div>
 
-      <!-- Swiper Container -->
+  </div>
+
+  <!-- RIGHT DECORATION -->
+  <div class="absolute right-0 top-24 w-24 h-48 bg-orange-500 rounded-l-full opacity-90"></div>
+
+</section>
+
+<section class="bg-[#f4f4f4] py-20 relative">
+
+  <div class="max-w-7xl mx-auto px-6">
+
+    <!-- Heading -->
+    <h2 class="text-4xl font-bold text-teal-600 mb-10">
+      What’s In Our Pocket?
+    </h2>
+
+    <!-- Tabs -->
+    <div class="flex gap-10 mb-6 text-gray-700 font-medium">
+      <button class="tab active border-b-2 border-orange-500 pb-1" data-tab="corporate">Corporate</button>
+      <button class="tab pb-1" data-tab="industrial">Industrial</button>
+      <button class="tab pb-1" data-tab="retail">Retail</button>
+      <button class="tab pb-1" data-tab="investments">Investments</button>
+    </div>
+
+    <!-- Content Area -->
+    <div class="grid lg:grid-cols-2 items-center">
+
+      <!-- LEFT CONTENT -->
+      <div class="bg-teal-700 text-white p-10">
+
+        <h3 id="title" class="text-2xl font-semibold mb-4">
+          Corporate Spaces
+        </h3>
+
+        <p id="desc" class="text-sm leading-relaxed mb-6">
+          From start-ups to leading multinational companies, we present a commercial real-estate solution for every corporate business.
+        </p>
+
+        <a href="#" class="inline-flex items-center gap-4 bg-white text-black px-6 py-3 rounded-full font-semibold">
+
+        <span class="w-6 h-[2px] bg-black"></span>
+          READ MORE
+
+        </a>
+
+      </div>
+
+
+      <!-- RIGHT IMAGE -->
       <div class="relative">
-        <div class="swiper featureSwiper">
-          <div class="swiper-wrapper">
 
-            {% for rs in project_featured %}
-            <div class="swiper-slide">
+       <img id="image" src="corporate.jpg" class="w-full h-[420px] object-cover">
 
-                <div class="bg-white rounded-lg shadow-md hover:shadow-2xl transition-all duration-300 overflow-hidden border border-gray-100">
+      <!-- Decoration -->
+      <div class="absolute bottom-0 right-0 w-72 h-28 border-2 border-orange-500 rounded-full"></div>
 
-                  <!-- IMAGE -->
-                  <div class="relative h-44 overflow-hidden">
-                    {% if rs.image %}
-                      <img src="{{ rs.image.url }}" class="w-full h-full object-cover transition duration-700 hover:scale-110">
-                    {% endif %}
-
-                    <span class="absolute bottom-3 right-3 bg-black/80 text-white text-[11px] font-semibold px-3 py-1 rounded-full">
-                      {{ rs.construction_status }}
-                    </span>
-
-                  </div>
-
-                  <!-- BASIC INFO -->
-                  <div class="p-3 space-y-2">
-
-                  <div class="flex justify-between items-center gap-2">
-                    <h3 class="font-bold text-lg text-gray-900">
-                      {{ rs.project_name }}
-                    </h3>
-
-                    <p class="text-[#c6a16e] font-extrabold text-lg">
-                      {% if rs.min_price %}
-                        ₹{{ rs.min_price|indian_price }}
-                      {% else %} Price on request {% endif %}
-                    </p>
-                  </div>
-
-
-                      <p class="text-sm text-gray-500 flex items-center gap-2">
-                      <i class="fas fa-location-dot text-[#c6a16e]"></i>
-                      {{ rs.locality.name }}, {{ rs.city.name }}
-                    </p>
-
-                    <!-- QUICK STATS -->
-                    <div class="grid grid-cols-3 text-center text-xs border-t border-gray-200 pt-4 mt-3">
-
-
-                      <div>
-                        <p class="text-gray-400 uppercase tracking-wide">Area</p>
-                        <p class="font-semibold">{{ rs.get_carpet_area_range }}</p>
-                      </div>
-
-                      <div>
-                        <p class="text-gray-400 uppercase tracking-wide">Developer</p>
-                        <p class="font-semibold text-green-600">{{ rs.developer }}</p>
-                      </div>
-
-                      <div>
-                        <p class="text-gray-400 uppercase tracking-wide">Possession</p>
-                        <p class="font-semibold">
-                          {{ rs.possession_month }} {{ rs.possession_year }}
-                        </p>
-                      </div>
-
-                    </div>
-
-                    <!-- ================= YOUR CONFIGURATION SYSTEM ================= -->
-
-                  <div class="config-card bg-white mt-4 h-[120px] flex flex-col overflow-hidden border border-gray-200 shadow-sm">
-
-                      {% with rs.configurations.all as configs %}
-                      {% if configs %}
-                      {% regroup configs by bhk_type as bhk_groups %}
-
-                      <!-- TABS -->
-                      <div class="border-b border-gray-200 flex-shrink-0 bg-gray-50">
-                        <div class="bhk-tabs flex gap-1 text-sm font-semibold px-2 py-1 relative">
-
-                        <span class="bhk-underline absolute bottom-0 h-[3px] bg-[#c6a16e] transition-all"></span>
-
-                          {% for group in bhk_groups %}
-                          <button type="button" class="bhk-tab px-3 py-2 {% if forloop.first %}active text-[#c6a16e]{% endif %}" data-target="bhk-{{ rs.id }}-{{ forloop.counter }}">
-                            {{ group.grouper }}
-                          </button>
-                          {% endfor %}
-                        </div>
-                      </div>
-
-                      <!-- PANELS -->
-                      <div class="flex-1 overflow-hidden">
-
-                        {% for group in bhk_groups %}
-                        <div class="bhk-panel {% if not forloop.first %}hidden{% endif %} h-full" data-panel="bhk-{{ rs.id }}-{{ forloop.counter }}">
-
-                          <div class="h-full overflow-y-auto">
-
-                            <table class="w-full text-xs border-collapse">
-
-                              <thead class="bg-gray-100 sticky top-0">
-                                <tr class="text-gray-700 font-bold text-center">
-                                  <th class="py-2 border-b">Area</th>
-                                  <th class="py-2 border-b">Price</th>
-                                  <th class="py-2 border-b">Parking</th>
-                                  <th class="py-2 border-b">Balcony</th>
-                                </tr>
-                              </thead>
-
-                              <tbody class="text-center">
-
-                                {% for cfg in group.list %}
-                                <tr class="{% if cfg.sold_out %}bg-red-50{% endif %}">
-
-                                  <td class="py-2 border-b">
-                                    {{ cfg.area_sqft }} sqft
-                                  </td>
-
-                                  <td class="py-2 border-b font-semibold">
-                                    {% if cfg.sold_out %}
-                                    <span class="bg-red-100 text-red-600 px-2 py-0.5 text-[11px] font-bold rounded-full">
-                                      SOLD OUT
-                                    </span>
-                                    {% else %}
-                                      <span class="text-[#c6a16e] font-extrabold">
-                                        {{ cfg.formatted_price }}
-                                      </span>
-                                    {% endif %}
-                                  </td>
-
-                                  <td class="py-2 border-b">
-                                    {{ cfg.parking|yesno:"Yes,*" }}
-                                  </td>
-
-                                  <td class="py-2 border-b">
-                                    {{ cfg.balcony|yesno:"Yes,*" }}
-                                  </td>
-
-                                </tr>
-                                {% endfor %}
-
-                              </tbody>
-                            </table>
-
-                          </div>
-                        </div>
-                        {% endfor %}
-
-                      </div>
-
-                      {% else %}
-                      <div class="flex-1 flex items-center justify-center text-sm text-gray-500">
-                        Configuration details available on request
-                      </div>
-                      {% endif %}
-                      {% endwith %}
-
-                    </div>
-
-                  </div>
-
-                  <!-- BUTTON -->
-                <a href="{{ rs.get_absolute_url }}" class="block text-center py-3 font-semibold text-white bg-[#c6a16e] transition-all duration-300 hover:bg-[#b8925a] hover:shadow-lg hover:-translate-y-0.5">
-                  View Details
-                </a>
-
-                </div>
-
-              </div>
-
-
-            {% empty %}
-            <p class="col-span-3 text-center text-gray-500">No featured projects available at the moment.</p>
-            {% endfor %}
-          </div>
-        </div>
-        <br>
-      
       </div>
 
     </div>
-  </section>
 
-  <script>
-    var swiper = new Swiper(".featureSwiper", {
-      slidesPerView: 1,
-      spaceBetween: 20,
-      loop: true,
-      autoplay: {
-        delay: 3000, // Auto slide every 3 seconds
-        disableOnInteraction: false,
-        pauseOnMouseEnter: true, // pause on hover
-      },
-      pagination: {
-        el: ".swiper-pagination",
-        clickable: true,
-      },
-      navigation: {
-        nextEl: ".swiper-button-next",
-        prevEl: ".swiper-button-prev",
-      },
-    breakpoints: {
-      0: { slidesPerView: 1 },
-      640: { slidesPerView: 1 },
-      768: { slidesPerView: 2 },
-      1024: { slidesPerView: 3 }
-    },
-    });
-  </script>
+  </div>
+
+</section>
 <!-- ======================= FEATURE PROJECTS END ======================= -->
 
 <hr class="text-white w-[26px]">
 
-<!-- ======================= FEATURE PROPERTIES ======================= -->
-  <section class="bg-gray-100 py-8">
-    <div class="max-w-7xl mx-auto px-6">
+<!-- ======================= FEATURE STATS ======================= -->
+<section class="relative py-20 bg-[#19A397] text-white overflow-hidden">
 
-      <!-- Heading -->
-      <div class="text-center mb-8">
-        <h2 class="text-4xl font-bold">
-          Featured <span class="text-[#c6a16e]">Properties</span>
-        </h2>
-        <p class="text-gray-600 mt-1">
-          Premium 2BHK furnished flats in Malad, Mumbai
+  <!-- Pattern Background -->
+  <div class="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
+
+  <div class="relative max-w-7xl mx-auto px-6 text-center">
+
+    <!-- Heading -->
+    <h2 class="text-3xl md:text-4xl font-bold tracking-wide">
+      THE EPITOME OF QUALITY
+    </h2>
+
+    <p class="mt-3 text-sm md:text-base opacity-90">
+      A Track Record That Speaks For Itself
+    </p>
+
+    <!-- Stats -->
+    <div class="grid md:grid-cols-3 gap-10 mt-14">
+
+      <!-- Item 1 -->
+      <div>
+        <h3 class="text-5xl font-bold">15,000+</h3>
+        <p class="mt-3 text-sm tracking-widest uppercase opacity-90">
+          Properties
         </p>
       </div>
 
-        <!-- Swiper -->
-      <div class="swiper rentPropSwiper h-full">
-        <div class="swiper-wrapper">
-
-          {% for property in rental_properties %}
-          <div class="swiper-slide flex h-auto">
-            <div class="bg-white rounded-lg shadow-md hover:shadow-xl transition duration-300 overflow-hidden flex flex-col w-full h-full">
-
-
-              <!-- Image -->
-              <div class="relative">
-                {% if property.image %}
-                  <img src="{{ property.image.url }}" class="w-full h-56 object-cover"  alt="{{ property.title }}">
-                {% else %}
-                  <img src="https://via.placeholder.com/800x500" class="w-full h-56 object-cover" alt="No Image">
-                {% endif %}
-
-                {% if property.configuration %}
-                <span class="absolute top-4 right-4 bg-[#c6a16e] text-white text-xs px-3 py-1 font-semibold">
-                  {{ property.configuration }}
-                </span>
-                {% endif %}
-              </div>
-
-              <!-- Content -->
-              <div class="p-6 flex flex-col flex-grow">
-                <h3 class="text-lg font-semibold">
-                  {{ property.title }}
-                </h3>
-
-                <p class="text-sm text-gray-500 mb-4">
-                  {{ property.locality.name }}, {{ property.city.name }}
-                </p>
-
-                <div class="space-y-2 text-sm text-gray-600">
-
-                  {% if property.furnishing_type %}
-                  <p>
-                    <i class="fa-solid fa-couch text-[#c6a16e] mr-2"></i>
-                    {{ property.furnishing_type.name }}
-                  </p>
-                  {% endif %}
-
-                  {% if property.tenant_type %}
-                  <p>
-                    <i class="fa-solid fa-users text-[#c6a16e] mr-2"></i>
-                    {{ property.tenant_type.name }}
-                  </p>
-                  {% endif %}
-
-                  <p>
-                    <i class="fa-solid fa-location-dot text-[#c6a16e] mr-2"></i>
-                    {{ property.city.name }}
-                  </p>
-                </div>
-
-                <!-- Price + Button -->
-                <div class="border-t border-gray-200 pt-3 mt-auto flex items-center justify-between">
-                  <div>
-                    <h4 class="text-xl font-bold text-[#c6a16e]">
-                      <i class="fa-solid fa-indian-rupee-sign mr-1"></i>
-                      {{ property.rent_details.monthly_rent|default:"0" }}
-                    </h4>
-                    <p class="text-xs text-gray-500">per month</p>
-                  </div>
-
-                  <a href="{% url 'rental_detail' property.slug %}"
-                    class="bg-[#c6a16e] text-white px-4 py-2 text-sm font-semibold rounded-lg transition-all duration-300 ease-in-out hover:bg-[#b8925a] hover:shadow-xl hover:scale-105">
-                    View Details
-                  </a>
-                </div>
-
-              </div>
-            </div>
-          </div>
-          {% endfor %}
-
-        </div>
-
-        <div class="swiper-button-prev !text-[#c6a16e] scale-90"></div>
-        <div class="swiper-button-next !text-[#c6a16e] scale-90"></div>
-      </div>
-
-    </div>
-  </section>
-<!-- ======================= FEATURE PROPERTIES END ======================= -->
-
-
-<!-- ======================= EXCLUSIVE PROPERTIES SECTION ======================= -->
-  <section class=" mx-auto py-12 px-4 bg-gray-50 screen-h"  data-aos="fade-up">
-      <!-- Heading -->
-      <h2 class="text-center text-2xl md:text-3xl font-bold mb-12">
-        Benefits of our <span class="text-indigo-600">PG/Co-Living</span>
-      </h2>
-
-      <!-- Grid Items -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
-        
-        <!-- Card 1 -->
-        <div>
-          <img src="{% static 'main/images/benefits of coliving/image.png' %}" alt="Benefit 1" class="mx-auto mb-4 h-28">
-          <h3 class="font-semibold text-lg">Stress free search</h3>
-          <p class="text-gray-600 text-sm">
-            Real property photos and Transparent pricing
-          </p>
-        </div>
-
-        <!-- Card 2 -->
-        <div>
-          <img src="{% static 'main/images/benefits of coliving/2.webp' %}" alt="Benefit 2" class="mx-auto mb-4 h-28">
-          <h3 class="font-semibold text-lg">Find your Match</h3>
-          <p class="text-gray-600 text-sm">
-            Lots of options to choose from (private, twin & multi-sharing)
-          </p>
-        </div>
-
-        <!-- Card 3 -->
-        <div>
-          <img src="{% static 'main/images/benefits of coliving/3.webp' %}" alt="Benefit 3" class="mx-auto mb-4 h-28">
-          <h3 class="font-semibold text-lg">Bon appetite</h3>
-          <p class="text-gray-600 text-sm">
-            Info on meal type and offerings to know what’s cooking
-          </p>
-        </div>
-
-        <!-- Card 4 -->
-        <div>
-          <img src="{% static 'main/images/benefits of coliving/4.webp' %}" alt="Benefit 4" class="mx-auto mb-4 h-28">
-          <h3 class="font-semibold text-lg">Your Life, Your Rules</h3>
-          <p class="text-gray-600 text-sm">
-            Advance info on house rules to live like you do
-          </p>
-        </div>
-
-      </div>
-  </section>
-<!-- ======================= EXCLUSIVE PROPERTIES SECTION END ======================= -->
-
-<hr>
-
-<!-- ======================= POSSESSION STATUS – PREMIUM CLEAN VERSION ======================= -->
-<section class="py-16 bg-slate-50">
-
-  <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-12 gap-12 items-start">
-
-    <!-- LEFT INFO -->
-    <div class="lg:col-span-4">
-
-      <div class="border-l-4 border-indigo-700 pl-5">
-        <p class="text-sm font-semibold tracking-widest text-gray-500 uppercase">
-          Possession Overview
-        </p>
-
-        <h2 class="text-4xl font-extrabold text-gray-900 mt-2 leading-tight">
-          Projects by <span class="text-indigo-700">Possession Status</span>
-        </h2>
-
-        <p class="text-gray-600 mt-4 max-w-md">
-          Browse homes by readiness — move-in ready, upcoming possession, or newly launched projects.
+      <!-- Item 2 -->
+      <div>
+        <h3 class="text-5xl font-bold">5,000+</h3>
+        <p class="mt-3 text-sm tracking-widest uppercase opacity-90">
+          Corporate Clients
         </p>
       </div>
 
-      <a href="{% url 'search_projects' %}" target="_blank" class="inline-block mt-7 px-7 py-3 bg-slate-900 text-white font-semibold tracking-wide hover:bg-slate-800 transition shadow-sm">
-        View All Projects
-      </a>
-
-    </div>
-
-    <!-- RIGHT CARDS -->
-    <div class="lg:col-span-8 grid md:grid-cols-3 gap-6">
-
-      <!-- READY TO MOVE -->
-      <a target="_blank" href="{% url 'search_projects' %}?bhk=&construction_status=Ready+To+Move&rera=" class="group bg-white overflow-hidden border border-gray-300 shadow-sm hover:shadow-md transition">
-
-        <img src="https://sigmahomes.co.in/media/images/aerial_view-new.webp" class="w-full h-56 object-cover group-hover:scale-105 transition duration-700">
-
-        <div class="p-3 space-y-1.5">
-
-          <span class="inline-block text-[11px] font-semibold text-emerald-700 bg-emerald-100 px-2 py-0.5 border border-emerald-200 uppercase tracking-wide">
-            Ready To Move
-          </span>
-
-          <h3 class="text-base font-bold text-gray-900">
-            Ready Homes
-          </h3>
-
-          <p class="text-xs text-gray-600">
-            Immediate possession options
-          </p>
-
-          <div class="flex items-center justify-between pt-1 border-t mt-1">
-            <p class="text-xl font-extrabold text-gray-900">
-              {{ possession_counts.ready_to_move|default:"0" }}
-            </p>
-            <span class="text-xs text-gray-500 uppercase font-semibold">
-              Projects
-            </span>
-          </div>
-
-        </div>
-      </a>
-
-      <!-- UNDER CONSTRUCTION -->
-      <a target="_blank" href="{% url 'search_projects' %}?bhk=&construction_status=Under+Construction&rera=" class="group bg-white overflow-hidden border border-gray-300 shadow-sm hover:shadow-md transition">
-
-        <img src="https://sigmahomes.co.in/media/images/Elevation_Render_1_fQvU_1.webp" class="w-full h-56 object-cover group-hover:scale-105 transition duration-700">
-
-        <div class="p-3 space-y-1.5">
-
-          <span class="inline-block text-[11px] font-semibold text-amber-700 bg-amber-100 px-2 py-0.5 border border-amber-200 uppercase tracking-wide">
-            Under Construction
-          </span>
-
-          <h3 class="text-base font-bold text-gray-900">
-            Upcoming Possession
-          </h3>
-
-          <p class="text-xs text-gray-600">
-            Homes nearing completion
-          </p>
-
-          <div class="flex items-center justify-between pt-1 border-t mt-1">
-            <p class="text-xl font-extrabold text-gray-900">
-              {{ possession_counts.under_construction|default:"0" }}
-            </p>
-            <span class="text-xs text-gray-500 uppercase font-semibold">
-              Projects
-            </span>
-          </div>
-
-        </div>
-      </a>
-
-      <!-- NEW LAUNCH -->
-      <a target="_blank" href="{% url 'search_projects' %}?bhk=&construction_status=New+Launch&rera=" class="group bg-white overflow-hidden border border-gray-300 shadow-sm hover:shadow-md transition">
-
-        <img src="https://sigmahomes.co.in/media/images/Road-To-Elevation-3.webp" class="w-full h-56 object-cover group-hover:scale-105 transition duration-700">
-
-        <div class="p-3 space-y-1.5">
-
-          <span class="inline-block text-[11px] font-semibold text-indigo-700 bg-indigo-100 px-2 py-0.5 border border-indigo-200 uppercase tracking-wide">
-            New Launch
-          </span>
-
-          <h3 class="text-base font-bold text-gray-900">
-            New Launches
-          </h3>
-
-          <p class="text-xs text-gray-600">
-            Fresh project listings
-          </p>
-
-          <div class="flex items-center justify-between pt-1 border-t mt-1">
-            <p class="text-xl font-extrabold text-gray-900">
-              {{ possession_counts.new_launch|default:"0" }}
-            </p>
-            <span class="text-xs text-gray-500 uppercase font-semibold">
-              Projects
-            </span>
-          </div>
-
-        </div>
-      </a>
+      <!-- Item 3 -->
+      <div>
+        <h3 class="text-5xl font-bold">90%</h3>
+        <p class="mt-3 text-sm tracking-widest uppercase opacity-90">
+          Client Retention Rate
+        </p>
+      </div>
 
     </div>
 
   </div>
 </section>
-<!-- ======================= POSSESSION STATUS – PREMIUM CLEAN VERSION END =======================  -->
+<!-- ======================= FEATURE STATS END ======================= -->
 
-<hr>
-  
-<!-- ======================= 🌟 WHY CHOOSE US ======================= -->
-<section class="bg-gray-100 py-16">
+
+<!-- ======================= EXCLUSIVE INDUSTRIES SECTION ======================= -->
+<section class="bg-[#4b4b4b] py-20 text-center">
+
+  <div class="max-w-7xl mx-auto px-6 relative">
+
+    <h2 class="text-3xl md:text-4xl font-bold text-white">
+      THE INDUSTRIES WE SERVE
+    </h2>
+
+    <p class="text-gray-300 mt-2">
+      Industry Agnostic and Versatile
+    </p>
+
+
+    <!-- ARROWS -->
+    <button id="scrollLeft" class="absolute left-2 top-[60%] -translate-y-1/2 bg-gray-700 hover:bg-gray-600 text-white w-10 h-10 rounded-full flex items-center justify-center z-10">
+      ‹
+    </button>
+
+    <button id="scrollRight" class="absolute right-2 top-[60%] -translate-y-1/2 bg-gray-700 hover:bg-gray-600 text-white w-10 h-10 rounded-full flex items-center justify-center z-10">
+      ›
+    </button>
+
+
+    <!-- SLIDER -->
+    <div id="industrySlider" class="flex gap-8 mt-16 overflow-x-auto scroll-smooth no-scrollbar">
+
+      <!-- ITEM -->
+      <div class="industry-card">
+        <div class="bg-white p-6 rounded-lg">
+         <img src="https://frpl.in/wp-content/uploads/2022/06/banking-1.png" class="w-14 h-14 mx-auto object-contain">
+        </div>
+       <p class="text-white mt-4">Banking</p>
+      </div>
+
+      <div class="industry-card">
+        <div class="bg-white p-6 rounded-lg">
+          <img src="https://frpl.in/wp-content/uploads/2022/06/retail.png" class="w-14 h-14 mx-auto object-contain">
+        </div>
+       <p class="text-white mt-4">Retail</p>
+      </div>
+
+    <div class="industry-card">
+      <div class="bg-white p-6 rounded-lg">
+       <img src="https://frpl.in/wp-content/uploads/2022/06/biotech.png" class="w-14 h-14 mx-auto object-contain">
+      </div>
+     <p class="text-white mt-4">Biotechnology</p>
+    </div>
+
+    <div class="industry-card">
+      <div class="bg-white p-6 rounded-lg">
+      <img src="https://frpl.in/wp-content/uploads/2022/06/chemicals.png" class="w-14 h-14 mx-auto object-contain">
+      </div>
+      <p class="text-white mt-4">Chemicals</p>
+    </div>
+
+    <div class="industry-card">
+      <div class="bg-white p-6 rounded-lg">
+      <img src="https://frpl.in/wp-content/uploads/2022/06/construction.png" class="w-14 h-14 mx-auto object-contain">
+    </div>
+    <p class="text-white mt-4">Construction</p>
+    </div>
+
+    </div>
+
+  </div>
+</section>
+<!-- ======================= EXCLUSIVE INDUSTRIES SECTION END ======================= -->
+
+<!-- ================= OUR FOOTPRINTS ================= -->
+<section class="bg-gray-100 py-20">
+
+  <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
+
+    <!-- LEFT MAP -->
+    <div class="flex justify-center relative">
+
+      <img src="https://frpl.in/wp-content/uploads/2025/03/MAP-01-2048x2048.webp"
+      class="w-full max-w-md opacity-90 transition duration-500 hover:scale-105">
+
+    </div>
+
+
+    <!-- RIGHT CONTENT -->
+    <div>
+
+      <h2 class="text-3xl md:text-4xl font-bold text-teal-600 mb-6">
+        FAIRDEAL FOOTPRINTS
+      </h2>
+
+      <p class="text-gray-700 leading-relaxed mb-6">
+        We’ll help you find the perfect corporate space for your business, in the heart of the city,
+        close to transportation facilities or proximal to public hotspots with our best-in-class
+        commercial real estate solutions.
+      </p>
+
+      <p class="text-gray-700 leading-relaxed mb-6">
+        We've our offices in 8 cities in the country. Whatever corporate space you need,
+        wherever you need it – we're ready to serve you!
+      </p>
+
+
+      <!-- Cities -->
+      <ul id="cityList" class="grid grid-cols-2 gap-4 text-gray-800 font-medium">
+
+        <li class="city cursor-pointer p-2 rounded hover:bg-teal-50 transition">• Mumbai</li>
+        <li class="city cursor-pointer p-2 rounded hover:bg-teal-50 transition">• Bengaluru</li>
+        <li class="city cursor-pointer p-2 rounded hover:bg-teal-50 transition">• Hyderabad</li>
+        <li class="city cursor-pointer p-2 rounded hover:bg-teal-50 transition">• Delhi/NCR</li>
+        <li class="city cursor-pointer p-2 rounded hover:bg-teal-50 transition">• Chennai</li>
+        <li class="city cursor-pointer p-2 rounded hover:bg-teal-50 transition">• Ahmedabad</li>
+        <li class="city cursor-pointer p-2 rounded hover:bg-teal-50 transition">• Kolkata</li>
+        <li class="city cursor-pointer p-2 rounded hover:bg-teal-50 transition">• Pune</li>
+
+      </ul>
+
+    </div>
+
+  </div>
+
+</section>
+<!-- ===================== OUR FOOTPRINTS SECTION END ===================== -->
+
+
+<!-- ================= OUR CLIENTS ================= -->
+<section class="py-16 bg-[#E0E0E0]">
+
+  <div class="max-w-7xl mx-auto px-4">
+
+    <!-- Title -->
+    <h2 class="text-center text-[#00928B] text-2xl font-bold tracking-widest mb-12 uppercase">
+      OUR CLIENTS
+    </h2>
+
+    <!-- Slider Wrapper -->
+    <div class="relative flex items-center">
+
+   <!-- Left Arrow -->
+      <button id="prevBtn"
+        class="absolute left-0 z-10 bg-white p-3 rounded-full shadow hover:bg-gray-200">
+        &#8592;
+      </button>
+
+
+      <!-- Logo Slider -->
+      <div id="slider2" class="flex overflow-x-auto scroll-smooth gap-12 px-12 items-center no-scrollbar">
+
+        <img src="https://frpl.in/wp-content/uploads/2022/12/Hiranandani-removebg-preview.png" class="h-12 flex-shrink-0">
+        <img src="https://frpl.in/wp-content/uploads/2022/12/Sennheiser-removebg-preview.png" class="h-12 flex-shrink-0">
+        <img src="https://frpl.in/wp-content/uploads/2022/12/Sennheiser__1_-removebg-preview.png" class="h-10 flex-shrink-0">
+        <img src="https://frpl.in/wp-content/uploads/2022/12/Sennheiser__2_-removebg-preview.png" class="h-10 flex-shrink-0">
+        <img src="https://frpl.in/wp-content/uploads/2022/12/BumiArmada-removebg-preview.png" class="h-8 flex-shrink-0">
+        <img src="https://frpl.in/wp-content/uploads/2022/12/Apollo-removebg-preview.png" class="h-14 flex-shrink-0">
+        <img src="https://frpl.in/wp-content/uploads/2022/12/Oiltanking-removebg-preview.png" class="h-12 flex-shrink-0">
+        <img src="https://frpl.in/wp-content/uploads/2022/12/piramal-logo-removebg-preview.png" class="h-12 flex-shrink-0">
+        <img src="https://frpl.in/wp-content/uploads/2022/12/Adani_realty-removebg-preview.png" class="h-12 flex-shrink-0">
+        <img src="https://frpl.in/wp-content/uploads/2022/12/Shapoorji_Pallonji_Logo-removebg-preview.png" class="h-12 flex-shrink-0">
+
+      </div>
+
+      <!-- Right Arrow -->
+      <button id="nextBtn"
+        class="absolute right-0 z-10 bg-white p-3 rounded-full shadow hover:bg-gray-200">
+        &#8594;
+      </button>
+
+    </div>
+
+  </div>
+
+</section>
+<!-- ===================== OUR CLIENTS SECTION END ===================== -->
+
+<!-- ================= OUR TESTIMONIAL ================= -->
+<section class="py-20 bg-[#ECECEC]">
   <div class="max-w-7xl mx-auto px-6">
 
     <!-- Heading -->
-    <div class="text-center mb-14">
-      <h2 class="text-4xl font-bold text-gray-900">
-        Why Choose <span class="text-[#c6a16e]">Aspira</span>
-      </h2>
-      <p class="text-gray-600 mt-3">
-        Experience the difference of professionally managed living
-      </p>
-    </div>
+    <div class="text-center mb-12">
+      <h2 class="text-3xl font-bold text-[#00928B] tracking-wide">SUCCESSES</h2>
+      <p class="text-[#f26522] mt-2">An easier way to measure our expertise</p>
 
-    <!-- Cards Grid -->
-    <div class="grid md:grid-cols-3 gap-8">
-
-      <!-- Card 1 -->
-       {% for rs in why_choose_items %}
-      <div class="bg-white p-8 rounded-lg shadow-md hover:shadow-xl transition-all duration-300">
-        <div class="w-14 h-14 flex items-center justify-center rounded-xl bg-[#c6a16e]/10 mb-6">
-          <i class="fa-solid fa-check-circle text-[#c6a16e] text-xl"></i>
-        </div>
-        <h3 class="text-lg font-semibold text-gray-900">{{ rs.title }}</h3>
-        <p class="text-gray-600 mt-3 text-sm leading-relaxed">
-          {{ rs.description }}
-        </p>
+      <div class="flex justify-center mt-6">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" class="h-10">
       </div>
-       {% endfor %}
+
+      <p class="mt-2 text-gray-600 text-lg">Reviews</p>
+
+      <div class="flex justify-center items-center gap-2 mt-2">
+        <span class="text-xl font-semibold">4.8</span>
+
+        <div class="text-yellow-500 text-lg">
+          ★★★★★
+        </div>
+      </div>
+    </div>
 
 
+    <!-- Slider -->
+    <div class="relative overflow-hidden">
+
+      <div id="testimonialSlider"
+        class="flex transition-transform duration-500 ease-in-out">
+
+        <!-- CARD 1 -->
+        <div class="min-w-full md:min-w-[33.333%] px-4">
+          <div class="bg-white rounded-lg p-8 shadow-sm h-full">
+
+            <h4 class="font-semibold mb-3">Nikkhhil Jethwa</h4>
+
+            <p class="text-gray-600 text-sm leading-relaxed">
+              It's amazing team of Professional Champs! We were searching
+              commercial property and Fairdeal team got us the best
+              property at competitive price.
+            </p>
+
+            <div class="text-yellow-500 mt-4">★★★★★</div>
+
+          </div>
+        </div>
+
+
+        <!-- CARD 2 -->
+        <div class="min-w-full md:min-w-[33.333%] px-4">
+          <div class="bg-white rounded-lg p-8 shadow-sm h-full">
+
+            <h4 class="font-semibold mb-3">Ghanshyam Ukey</h4>
+
+            <p class="text-gray-600 text-sm leading-relaxed">
+              It's very nice and good people working with this
+              management and we really appreciate fantastic service
+              provider in the work wise.
+            </p>
+
+            <div class="text-yellow-500 mt-4">★★★★★</div>
+
+          </div>
+        </div>
+
+
+        <!-- CARD 3 -->
+        <div class="min-w-full md:min-w-[33.333%] px-4">
+          <div class="bg-white rounded-lg p-8 shadow-sm h-full">
+
+            <h4 class="font-semibold mb-3">Shobha Singh</h4>
+
+            <p class="text-gray-600 text-sm leading-relaxed">
+              An intense services which hard to find in Mumbai.
+              Was amazed to such standard work in Maharashtra.
+              Keep up the good work team.
+            </p>
+
+            <div class="text-yellow-500 mt-4">★★★★★</div>
+
+          </div>
+        </div>
+
+
+        <!-- CARD 4 -->
+        <div class="min-w-full md:min-w-[33.333%] px-4">
+          <div class="bg-white rounded-lg p-8 shadow-sm h-full">
+
+            <h4 class="font-semibold mb-3">Amisha</h4>
+
+            <p class="text-gray-600 text-sm leading-relaxed">
+              Positive experience working with the team.
+              Value cooperation and professional behaviour.
+            </p>
+
+            <div class="text-yellow-500 mt-4">★★★★★</div>
+
+          </div>
+        </div>
+
+      </div>
 
     </div>
+
+
+    <!-- Dots -->
+    <div class="flex justify-center mt-10 gap-3">
+
+      <button class="dot w-3 h-3 rounded-full bg-black"></button>
+      <button class="dot w-3 h-3 rounded-full bg-gray-400"></button>
+      <button class="dot w-3 h-3 rounded-full bg-gray-400"></button>
+
+    </div>
+
   </div>
 </section>
-<!-- ======================= 🌟 WHY CHOOSE US END ======================= -->
-  
-<!-- ======================= WHAT ARE YOU LOOKING FOR? ======================= -->
-  <section class="py-16 bg-gray-50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 text-center">
+<!-- ===================== OUR TESTIMONIAL SECTION END ===================== -->
 
-      <!-- Heading -->
-      <h2 class="text-4xl md:text-5xl font-semibold uppercase tracking-widest text-center mb-16 relative">
-        What Are You Looking For?
-        <span class="block mx-auto mt-4 h-[3px] w-24 bg-[#d99e48] rounded-full"></span>
-      </h2>
+<!-- ===================== HOW ITS WORK SECTION START ===================== -->
+<section class="bg-[#F1F1F1] py-20">
+  <div class="max-w-7xl mx-auto px-6">
 
+    <h2 class="text-4xl font-bold text-[#0f8f87] mb-16">
+      How Fairdeal Finds You <br>
+      The Best Corporate Spaces?
+    </h2>
 
+    <div class="grid grid-cols-1 md:grid-cols-5 gap-12">
 
-      <!-- Grid Responsive -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-
-        <!-- Office Space -->
-        <div class="text-center bg-white shadow-sm hover:shadow-md p-8 transition" data-aos="fade-up" data-aos-delay="100">
-          <div class="flex items-center justify-center h-20 w-20 mx-auto bg-[#d99e48]/10 shadow">
-            <i class="fas fa-building text-[#d99e48] text-3xl"></i>
-          </div>
-          <h3 class="mt-4 font-bold text-gray-800 uppercase">Office Space</h3>
-          <p class="text-sm text-gray-600 mt-2">
-            Give your business a presence in prime location with luxurious working atmosphere.
-          </p>
-        </div>
-
-        <!-- Residential -->
-        <div class="text-center bg-white shadow-sm hover:shadow-md p-8 transition" data-aos="fade-up" data-aos-delay="200">
-          <div class="flex items-center justify-center h-20 w-20 mx-auto bg-[#d99e48]/10 shadow">
-            <i class="fas fa-home text-[#d99e48] text-3xl"></i>
-          </div>
-          <h3 class="mt-4 font-bold text-gray-800 uppercase">Residential Apartment</h3>
-          <p class="text-sm text-gray-600 mt-2">
-            Find verified listings of luxury apartments for sale or rent from trusted owners.
-          </p>
-        </div>
-
-        <!-- Land -->
-        <div class="text-center bg-white shadow-sm hover:shadow-md p-8 transition" data-aos="fade-up" data-aos-delay="300">
-          <div class="flex items-center justify-center h-20 w-20 mx-auto bg-[#d99e48]/10 shadow">
-            <i class="fas fa-map-marked-alt text-[#d99e48] text-3xl"></i>
-          </div>
-          <h3 class="mt-4 font-bold text-gray-800 uppercase">Land</h3>
-          <p class="text-sm text-gray-600 mt-2">
-            Buy, rent or sell residential and commercial land in your location.
-          </p>
-        </div>
-
-        <!-- Commercial -->
-        <div class="text-center bg-white shadow-sm hover:shadow-md p-8 transition" data-aos="fade-up" data-aos-delay="400">
-          <div class="flex items-center justify-center h-20 w-20 mx-auto bg-[#d99e48]/10 shadow">
-            <i class="fas fa-store text-[#d99e48] text-3xl"></i>
-          </div>
-          <h3 class="mt-4 font-bold text-gray-800 uppercase">Commercial</h3>
-          <p class="text-sm text-gray-600 mt-2">
-            Explore shops, showrooms and office spaces for sale or rent.
-          </p>
-        </div>
-
-      </div>
-
-    </div>
-  </section>
-<!-- ======================= WHAT ARE YOU LOOKING FOR? ======================= -->
-
-<!-- ======================= ABOUT SECTION ======================= -->
-  <section class="bg-gray-100 py-16">
-    <div class="max-w-7xl mx-auto px-6">
-
-      <div class="grid md:grid-cols-2 gap-12 items-center">
-
-        <!-- LEFT CONTENT -->
-        <div>
-          <h2 class="text-4xl font-bold text-gray-900">
-            About <span class="text-[#c6a16e]">Aspira Living</span>
-          </h2>
-
-          <p class="text-gray-600 mt-6 leading-relaxed">
-            {{ about_page.content|safe }}
-          </p>
-
-          <!-- Stats -->
-          <div class="flex gap-12 mt-8 flex-wrap">
-
-              {% for metric in impact_metrics %}
-              <div class="text-center group">
-
-                  {% if metric.icon %}
-                  <div class="mb-2 text-[#c6a16e] text-xl">
-                      <i class="{{ metric.icon }}"></i>
-                  </div>
-                  {% endif %}
-
-                  <h3 class="text-3xl font-bold text-[#c6a16e] group-hover:scale-105 transition duration-300">
-                      {{ metric.value }}
-                  </h3>
-
-                  <p class="text-gray-500 text-sm">
-                      {{ metric.title }}
-                  </p>
-
-              </div>
-              {% empty %}
-                  <div class="text-gray-400 text-sm">
-                      No metrics available
-                  </div>
-              {% endfor %}
-
-          </div>
-
-
-          <!-- Button -->
-           <a href="{% url 'about' %}">
-            <button class="mt-8 bg-[#c6a16e] text-white px-6 py-2.5 rounded-lg transition-all duration-300 hover:bg-[#b8925a] hover:shadow-lg">
-              Learn More
-            </button>
-          </a>
-        </div>
-
-        <!-- RIGHT IMAGE -->
-        <div class="relative">
-          <img src="{{ about_page.image.url }}" class="rounded-2xl shadow-xl w-full h-[400px] object-cover">
-
-          <!-- Decorative Overlay -->
-          <div class="absolute inset-0 rounded-2xl border-4 border-[#c6a16e]/20"></div>
-        </div>
-
-      </div>
-
-    </div>
-  </section>
-<!-- ======================= ABOUT SECTION END======================= -->
-
-
-  <!-- ===================== How We Work ======================= -->
-  <section class="relative py-20 bg-cover bg-center text-white overflow-hidden" style="background-image:url('https://sigmahomes.co.in/media/about/Prithvi_Pride.jpg');">
-
-    <!-- Dark Gradient Overlay -->
-    <div class="absolute inset-0 bg-gradient-to-b from-black/80 via-black/85 to-black/95"></div>
-
-    <div class="relative max-w-7xl mx-auto px-6">
-
-      <!-- Heading -->
-      <div class="text-center mb-20">
-        <h2 class="text-4xl md:text-5xl font-bold uppercase tracking-widest relative inline-block">
-          How We Work
-          <span class="block mx-auto mt-6 h-[3px] w-24 bg-[#B8925A] rounded-full"></span>
-        </h2>
-        <p class="text-gray-400 mt-5 max-w-2xl mx-auto">
-          A transparent and guided journey from property search to possession.
-        </p>
-      </div>
-
-      <!-- Horizontal Line -->
-      <div class="hidden md:block absolute top-[52%] left-0 w-full h-[2px] bg-[#B8925A]/20"></div>
-
-      <!-- Steps -->
-      <div class="relative grid md:grid-cols-5 gap-10">
-
-        <!-- STEP -->
-        <div class="group relative backdrop-blur-md bg-white/5 border border-white/10 p-8 rounded-2xl shadow-lg hover:shadow-2xl hover:-translate-y-3 transition-all duration-500">
-
-          <!-- Big Watermark Number -->
-          <span class="absolute -top-6 right-4 text-[90px] font-extrabold text-orange-500/10 select-none">
-            01
-          </span>
-
-          <h3 class="text-xl font-semibold relative z-10">Search & Shortlisting</h3>
-          <p class="text-gray-300 mt-3 text-sm leading-relaxed relative z-10">
-            Verified properties curated to match your budget and lifestyle.
-          </p>
-
-          <div class="mt-6 h-[3px] w-12 bg-[#B8925A] group-hover:w-24 transition-all duration-500"></div>
-        </div>
-
-        <!-- STEP -->
-        <div class="group relative backdrop-blur-md bg-white/5 border border-white/10 p-8 rounded-2xl shadow-lg hover:shadow-2xl hover:-translate-y-3 transition-all duration-500">
-          <span class="absolute -top-6 right-4 text-[90px] font-extrabold text-[#B8925A]/40 select-none">
-            02
-          </span>
-          <h3 class="text-xl font-semibold relative z-10">Site Visit</h3>
-          <p class="text-gray-300 mt-3 text-sm leading-relaxed relative z-10">
-            Expert guided walkthroughs of shortlisted properties.
-          </p>
-          <div class="mt-6 h-[3px] w-12 bg-[#B8925A] group-hover:w-24 transition-all duration-500"></div>
-        </div>
-
-        <!-- STEP -->
-        <div class="group relative backdrop-blur-md bg-white/5 border border-white/10 p-8 rounded-2xl shadow-lg hover:shadow-2xl hover:-translate-y-3 transition-all duration-500">
-          <span class="absolute -top-6 right-4 text-[90px] font-extrabold text-[#B8925A]/40 select-none">
-            03
-          </span>
-          <h3 class="text-xl font-semibold relative z-10">Loan Assistance</h3>
-          <p class="text-gray-300 mt-3 text-sm leading-relaxed relative z-10">
-            Best home loan deals with smooth approvals.
-          </p>
-          <div class="mt-6 h-[3px] w-12 bg-[#B8925A] group-hover:w-24 transition-all duration-500"></div>
-        </div>
-
-        <!-- STEP -->
-        <div class="group relative backdrop-blur-md bg-white/5 border border-white/10 p-8 rounded-2xl shadow-lg hover:shadow-2xl hover:-translate-y-3 transition-all duration-500">
-          <span class="absolute -top-6 right-4 text-[90px] font-extrabold text-[#B8925A]/40 select-none">
-            04
-          </span>
-          <h3 class="text-xl font-semibold relative z-10">Legal Support</h3>
-          <p class="text-gray-300 mt-3 text-sm leading-relaxed relative z-10">
-            100% verified documentation & legal clarity.
-          </p>
-          <div class="mt-6 h-[3px] w-12 bg-[#B8925A] group-hover:w-24 transition-all duration-500"></div>
-        </div>
-
-        <!-- STEP -->
-        <div class="group relative backdrop-blur-md bg-white/5 border border-white/10 p-8 rounded-2xl shadow-lg hover:shadow-2xl hover:-translate-y-3 transition-all duration-500">
-          <span class="absolute -top-6 right-4 text-[90px] font-extrabold text-[#B8925A]/40 select-none">
-            05
-          </span>
-          <h3 class="text-xl font-semibold relative z-10">Booking & Possession</h3>
-          <p class="text-gray-300 mt-3 text-sm leading-relaxed relative z-10">
-            Hassle-free booking till home handover.
-          </p>
-          <div class="mt-6 h-[3px] w-12 bg-[#B8925A] group-hover:w-24 transition-all duration-500"></div>
-        </div>
-
-      </div>
-
-    </div>
-  </section>
-  <!-- ===================== How We Work End======================= -->
-
-<hr>
-<!-- ============= FAQ ============= -->
-  <section class="py-20 bg-gray-100" id="faq">
-    <div class="max-w-7xl mx-auto px-6">
-
-      <h2 class="text-4xl font-bold text-[#B8925A] mb-12 text-center">
-        Frequently Asked Questions
-      </h2>
-
-      <!-- FAQ Grid -->
-      <div id="faqContainer" class="grid grid-cols-1 md:grid-cols-2 gap-8"></div>
-
-      <!-- Buttons -->
-      <div class="text-center mt-10 space-x-4">
-        <button id="loadMoreBtn" class="px-6 py-3 bg-[#B8925A] text-white rounded-lg font-semibold hover:bg-[#B8925A] transition">
-          Load More
-        </button>
-
-        <button id="showLessBtn" class="px-3 py-2 bg-gray-400 text-white rounded-lg font-semibold hover:bg-gray-500 transition hidden">
-          Show Less   
-        </button>
-      </div>
-
-    </div>
-  </section>
-
-  <div id="faqData" class="hidden"> 
-    {% for faq in faqs %}
-    <div class="faq-item">
-      <div class="bg-white p-6 rounded-xl shadow hover:shadow-md transition">
-
-        <details class="group cursor-pointer">
-          <summary class="flex justify-between items-center font-semibold text-lg text-gray-900">
-            {{ faq.question }}
-            <i class="fas fa-chevron-down text-gray-600 transition-transform duration-300 group-open:rotate-180"></i>
-          </summary>
-
-          <p class="mt-4 text-gray-700 leading-7">
-            {{ faq.answer|safe }}
-          </p>
-        </details>
-
-      </div>
-    </div>
-    {% endfor %}
-  </div>
-<!-- ============= FAQ END ============= -->
-
-
-<!-- ======================= Blog Section Start ======================= -->
-  <section id="blog" class="py-24 bg-gradient-to-b from-gray-50 to-white">
-    <div class="max-w-7xl mx-auto px-4">
-
-      <div class="text-center mb-12">
-        <h2 class="text-4xl md:text-5xl font-semibold uppercase tracking-widest text-center mb-16 relative">
-          Latest from Our Blog
-          <span class="block mx-auto mt-4 h-[3px] w-24 bg-[#d99e48]/60 rounded-full"></span>
-        </h2>
-      </div>
-
-      <!-- ✅ Desktop Grid (3 cards) -->
-      <div class="hidden md:grid grid-cols-3 gap-8">
-        {% for blog in blogs %}
-        <article class="bg-white border border-gray-200 rounded-xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
-          <a href="{% url 'blog:blog_detail' blog.slug %}">
-            {% if blog.featured_image %}
-            <img src="{{ blog.featured_image.url }}" alt="{{ blog.title }}" class="w-full h-56 object-cover">
-            {% else %}
-            <img src="https://via.placeholder.com/600x400" alt="{{ blog.title }}" class="w-full h-56 object-cover">
-            {% endif %}
-          </a>
-          <div class="p-6 text-left">
-            {% if blog.category %}
-            <p class="text-xs font-semibold text-gray-500 tracking-wider uppercase">{{ blog.category.name }}</p>
-            {% else %}
-            <p class="text-xs font-semibold text-gray-500 tracking-wider uppercase">General</p>
-            {% endif %}
-            <h3 class="text-xl font-extrabold text-gray-900 mt-2 leading-snug line-clamp-2">
-              <a href="{% url 'blog:blog_detail' blog.slug %}" class="hover:underline">{{ blog.title }}</a>
-            </h3>
-            <p class="text-sm text-gray-600 mt-3 leading-relaxed line-clamp-2">{{ blog.short_description }}</p>
-            <div class="flex items-center justify-between mt-5">
-              <span class="text-xs font-semibold text-gray-500">By <span class="text-gray-800">{{ blog.author_name }}</span></span>
-              <a href="{% url 'blog:blog_detail' blog.slug %}" class="inline-flex items-center gap-2 text-blue-700 text-sm font-extrabold hover:underline">Read More <span>→</span></a>
-            </div>
-          </div>
-        </article>
-        {% endfor %}
-      </div>
-
-      <!-- ✅ Mobile/Tablet Slider (dots pagination) -->
-      <div class="md:hidden">
-        <div class="swiper blogSwiper">
-          <div class="swiper-wrapper">
-
-            {% for blog in blogs %}
-            <div class="swiper-slide">
-              <article class="bg-white border border-gray-200 shadow-sm overflow-hidden">
-                <a href="{% url 'blog:blog_detail' blog.slug %}">
-                  {% if blog.featured_image %}
-                  <img src="{{ blog.featured_image.url }}" alt="{{ blog.title }}" class="w-full h-56 object-cover">
-                  {% else %}
-                  <img src="https://via.placeholder.com/600x400" alt="{{ blog.title }}" class="w-full h-56 object-cover">
-                  {% endif %}
-                </a>
-                <div class="p-6 text-left">
-                  {% if blog.category %}
-                  <p class="text-xs font-semibold text-gray-500 tracking-wider uppercase">{{ blog.category.name }}</p>
-                  {% else %}
-                  <p class="text-xs font-semibold text-gray-500 tracking-wider uppercase">General</p>
-                  {% endif %}
-                  <h3 class="text-xl font-extrabold text-gray-900 mt-2 leading-snug line-clamp-2">
-                    <a href="{% url 'blog:blog_detail' blog.slug %}" class="hover:underline">{{ blog.title }}</a>
-                  </h3>
-                  <p class="text-sm text-gray-600 mt-3 leading-relaxed line-clamp-2">{{ blog.short_description }}</p>
-                  <div class="flex items-center justify-between mt-5">
-                    <span class="text-xs font-semibold text-gray-500">By <span class="text-gray-800">{{ blog.author_name }}</span></span>
-                    <a href="{% url 'blog:blog_list' %}" class="inline-flex items-center gap-2 text-blue-700 text-sm font-extrabold hover:underline">Read More <span>→</span></a>
-                  </div>
-                </div>
-              </article>
-            </div>
-            {% endfor %}
-
-          </div>
-
-          <div class="swiper-pagination mt-6 !relative"></div>
-        </div>
-      </div>
-
-      <div class="text-center mt-12">
-        <a href="{% url 'blog:blog_list' %}" class="inline-flex items-center gap-2 px-7 py-3 bg-blue-700 text-white font-extrabold shadow-md hover:shadow-xl transition">View All Blogs <span>→</span></a>
-      </div>
-
-    </div>
-  </section>
-<!-- ======================= Blog Section End ======================= -->
-
-<hr>
-
-  <!-- =======================  HOME LOAN PARTNERS SLIDER ======================= -->
-  <section class="py-16 bg-white" id="home-loan-partners">
-    <div class="max-w-7xl mx-auto px-6 text-center">
-
-      <h2 class="text-3xl md:text-4xl font-extrabold text-orange-600 mb-3">
-        Home Loan Partners
-      </h2>
-
-      <p class="text-gray-600 max-w-2xl mx-auto mb-12">
-        We are associated with India’s most trusted banks to help you
-        get the best home loan deals.
-      </p>
-
-      <!-- ✅ Slider Wrapper -->
+      <!-- STEP 1 -->
       <div class="relative">
 
-
-        <!-- ✅ Swiper -->
-        <div class="swiper loanPartnerSwiper !py-3 !px-2">
-          <div class="swiper-wrapper">
-
-            {% for bank in bank %}
-            <div class="swiper-slide !w-[240px] md:!w-[280px] lg:!w-[300px]">
-
-              <!-- ✅ Premium Partner Card -->
-              <div class="group relative w-full h-[160px] md:h-[180px] rounded-2xl overflow-hidden border border-gray-200 shadow-sm hover:shadow-2xl transition-all duration-500 bg-white">
-
-                <!-- ✅ Full Image Cover -->
-                <img src="{{bank.image.url}}" alt="{{bank.title}}"
-                  class="w-full h-full object-cover transition duration-700 group-hover:scale-110 group-hover:rotate-[0.5deg]"/>
-
-                <!-- ✅ Dark Gradient Overlay -->
-                <div
-                  class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent opacity-100 transition duration-500">
-                </div>
-
-                <!-- ✅ Bank Title -->
-                <div class="absolute bottom-0 left-0 right-0 p-3">
-                  <p
-                    class="text-white text-sm font-bold tracking-wide uppercase drop-shadow-lg truncate">
-                    {{bank.title}}
-                  </p>
-                </div>
-
-                <!-- ✅ Hover Glow Border -->
-                <div
-                  class="absolute inset-0 rounded-2xl ring-0 group-hover:ring-2 group-hover:ring-orange-500/70 transition duration-500">
-                </div>
-
-              </div>
-            </div>
-            {% endfor %}
-
-          </div>
+        <div class="w-28 h-28 bg-[#1c857f] text-white text-5xl font-bold rounded-full flex items-center justify-center mb-6">
+          1
         </div>
 
-      </div>
+        <h3 class="font-semibold text-lg mb-3">
+          Expert <br> Consultation
+        </h3>
 
-    </div>
-  </section>
-  <!-- ======================= HOME LOAN PARTNERS SLIDER END ======================= -->
-
-
-  <!-- ======================= FEATURED DEVELOPERS ======================= -->
-  <div class="developer-section">
-    <h2 class="section-title">Top Developers Projects</h2>
-
-    <div class="card-container">
-
-      {% for dev in featured_developers %}
-      <a href="{% url 'search_projects' %}?developer={{ dev.slug }}">
-        <div class="dev-card">
-
-          <div class="logo">
-            <img src="{{ dev.logo.url }}" alt="{{ dev.name }}" class="h-full w-full object-contain bg-cover">
-          </div>
-
-          <div class="footer-badge">
-            <span>TOTAL PROJECTS</span>
-            <span class="count">{{ dev.project_count }}</span>
-          </div>
-
+        <div class="border-b border-gray-500 relative mb-4">
+          <span class="absolute right-0 -bottom-2 text-xl"></span>
         </div>
-      </a>
-      {% endfor %}
 
-    </div>
-  </div>
-  <!-- ======================= FEATURED DEVELOPERS END ======================= -->
+        <p class="text-gray-700 text-sm leading-relaxed">
+          Professional consultation for requirement understanding.
+        </p>
 
-
-
-  <!-- ======================= LOCALITY START =======================-->
-  <section class="py-16 bg-white">
-    <div class="max-w-7xl mx-auto px-6">
-
-      <!-- Heading -->
-      <h2 class="text-4xl font-bold text-gray-900 mb-2">Popular Location</h2>
-      <p class="text-gray-600 mb-10">
-        Explore prime locations and key real estate destinations in Mumbai
-      </p>
-
-      <!-- Grid -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-        {% for rs in featured_locality %}
-        <!-- Card -->
-        <a href="{% url 'search_projects' %}?locality={{ rs.id }}" class="flex items-center gap-3 bg-gray-50 border border-gray-200 rounded-xl p-4 hover:shadow-md transition">
-          <div class="bg-gray-100 p-3 rounded-xl">
-            <i class="fa-solid fa-location-dot text-red-500 text-xl"></i>
-          </div>
-          <h3 class="font-semibold text-lg text-gray-800">{{rs.name}}</h3>
-        </a>
-        {% endfor %}     
-      </div>
-    </div>
-    <div class="mt-10 text-center">
-    <a href="{% url 'search_projects' %}" 
-      class="inline-flex items-center gap-2 px-6 py-3 border border-[#B8925A] text-[#B8925A] font-semibold hover:bg-[#B8925A] hover:text-white transition">
-
-      See All Localities
-      <i class="fa-solid fa-arrow-right text-sm"></i>
-
-    </a>
-  </div>
-
-  </section>
-  <!-- ======================= LOCALITY END ======================= -->
-
-
-<!-- ================= CONTACT FORM SECTION ================= -->
-<section class="py-10 bg-gray-100">
-
-  <div class="max-w-2xl mx-auto px-4 text-center">
-
-    <!-- Heading -->
-    <h2 class="text-4xl font-extrabold mb-2">
-      Get In <span class="text-[#B8925A]">Touch</span>
-    </h2>
-    <p class="text-gray-600 mb-8">
-      Let us know how we can help you
-    </p>
-
-    <!-- Card -->
-    <div class="bg-white rounded-2xl shadow-xl p-6 md:p-8">
-
-      <!-- Toggle Buttons -->
-      <div class="flex gap-3 mb-6">
-        <button type="button"
-          onclick="selectType(this)"
-          class="toggle-btn flex-1 bg-[#B8925A] text-white py-2.5 rounded-lg font-semibold transition">
-          I'm Looking for a Flat
-        </button>
-
-        <button type="button"
-          onclick="selectType(this)"
-          class="toggle-btn flex-1 bg-gray-200 text-gray-700 py-2.5 rounded-lg font-semibold transition">
-          I'm a Property Owner
-        </button>
       </div>
 
-      <!-- Form -->
-    <form method="POST" action="{% url 'contact' %}" class="space-y-4">
-      {% csrf_token %}
 
-      <!-- Hidden Type -->
-      <input type="hidden" name="type" id="enquiryType" value="flat">
+      <!-- STEP 2 -->
+      <div class="relative">
 
-      <!-- Name -->
-      <input type="text" name="name" required placeholder="Your Name"
-        class="w-full px-4 py-2.5 border border-gray-200 rounded-lg text-sm
-              focus:ring-2 focus:ring-[#B8925A] focus:border-[#B8925A] outline-none">
+        <div class="w-28 h-28 bg-[#1c857f] text-white text-5xl font-bold rounded-full flex items-center justify-center mb-6">
+          2
+        </div>
 
-      <!-- Email + Phone -->
-      <div class="grid md:grid-cols-2 gap-4">
-        <input type="email" name="email" required placeholder="Email Address"
-          class="w-full px-4 py-2.5 border border-gray-200 rounded-lg text-sm
-                focus:ring-2 focus:ring-[#B8925A] focus:border-[#B8925A] outline-none">
+        <h3 class="font-semibold text-lg mb-3">
+          Property analysis <br> & shortlisting
+        </h3>
 
-        <input type="tel" name="phone" required placeholder="Phone Number"
-          class="w-full px-4 py-2.5 border border-gray-200 rounded-lg text-sm
-                focus:ring-2 focus:ring-[#B8925A] focus:border-[#B8925A] outline-none">
+        <div class="border-b border-gray-500 relative mb-4">
+          <span class="absolute right-0 -bottom-2 text-xl"></span>
+        </div>
+
+        <p class="text-gray-700 text-sm leading-relaxed">
+          Without any number limits our experts analyze and present the most ideal spaces.
+        </p>
+
       </div>
 
-      <!-- Message -->
-      <textarea name="message" rows="4" required
-        placeholder="Tell us about your requirements..."
-        class="w-full px-4 py-2.5 border border-gray-200 rounded-lg text-sm
-              focus:ring-2 focus:ring-[#B8925A] focus:border-[#B8925A] outline-none resize-none"></textarea>
 
-      <!-- Button -->
-      <button type="submit"
-        class="w-full bg-[#B8925A] text-white py-3 rounded-lg font-semibold
-              hover:bg-[#a8824e] transition duration-300">
-        Submit Inquiry
-      </button>
+      <!-- STEP 3 -->
+      <div class="relative">
 
-    </form>
+        <div class="w-28 h-28 bg-[#1c857f] text-white text-5xl font-bold rounded-full flex items-center justify-center mb-6">
+          3
+        </div>
 
+        <h3 class="font-semibold text-lg mb-3">
+          Site <br> Inspection
+        </h3>
+
+        <div class="border-b border-gray-500 relative mb-4">
+          <span class="absolute right-0 -bottom-2 text-xl"></span>
+        </div>
+
+        <p class="text-gray-700 text-sm leading-relaxed">
+          Physical site visit and inspection with expert guidance
+        </p>
+
+      </div>
+
+
+      <!-- STEP 4 -->
+      <div class="relative">
+
+        <div class="w-28 h-28 bg-[#1c857f] text-white text-5xl font-bold rounded-full flex items-center justify-center mb-6">
+          4
+        </div>
+
+        <h3 class="font-semibold text-lg mb-3">
+          Negotiation Term <br> & Documentation
+        </h3>
+
+        <div class="border-b border-gray-500 relative mb-4">
+          <span class="absolute right-0 -bottom-2 text-xl"></span>
+        </div>
+
+        <p class="text-gray-700 text-sm leading-relaxed">
+          Processing and signing legal documentation after property finalization
+        </p>
+
+      </div>
+
+
+      <!-- STEP 5 -->
+      <div>
+
+        <div class="w-28 h-28 bg-[#1c857f] text-white text-5xl font-bold rounded-full flex items-center justify-center mb-6">
+            5
+        </div>
+
+        <h3 class="font-semibold text-lg mb-3">
+          Space & Amenities <br> Possession
+        </h3>
+
+        <div class="border-b border-gray-500 mb-4"></div>
+
+        <p class="text-gray-700 text-sm leading-relaxed">
+          Handover of the amenities, furnishing and additional service supports
+        </p>
+
+      </div>
 
     </div>
 
   </div>
 </section>
-<!-- ================= END CONTACT FORM ================= -->
+<!-- ===================== HOW ITS WORK SECTION END ===================== -->
 
+<!-- ===================== CONTACT SECTION ===================== -->
+<section class="bg-[#f8fafc] py-20">
 
+  <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
 
+    <!-- LEFT SIDE -->
+    <div>
 
+      <h2 class="text-4xl font-bold text-gray-900 mb-4">
+        Let's Talk About Your Project
+      </h2>
 
-  <div class="modal fade" id="commonModal" tabindex="-1">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content rounded-xl">
+      <p class="text-gray-600 mb-8">
+        Have questions or need help with your next project? Fill out the form and our team will get back to you shortly.
+      </p>
 
-        <div class="modal-header">
-          <h5 class="modal-title text-lg font-semibold" id="modalTitle">
-            Get In Touch
-          </h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      <!-- Contact Info -->
+      <div class="space-y-6">
+
+        <div class="flex items-start gap-4">
+          <div class="bg-[#1f9a92] p-3 rounded-full text-white">
+           <i class="fa-solid fa-location-dot"></i>
+          </div>
+          <div>
+            <h4 class="font-semibold text-gray-800">Our Office</h4>
+            <p class="text-gray-600 text-sm">Virar West, Mumbai, India</p>
+          </div>
         </div>
 
-        <div class="modal-body">
-          <form class="space-y-3">
-            <input type="text" placeholder="Your Name" class="w-full border px-3 py-2 rounded">
-            <input type="tel" placeholder="Phone Number" class="w-full border px-3 py-2 rounded">
-            <textarea rows="3" placeholder="Message" class="w-full border px-3 py-2 rounded"></textarea>
-
-            <button class="w-full bg-orange-500 text-white py-2 rounded">
-              Submit
-            </button>
-          </form>
+        <div class="flex items-start gap-4">
+          <div class="bg-[#1f9a92] p-3 rounded-full text-white">
+            <i class="fa-solid fa-phone"></i>
+          </div>
+          <div>
+            <h4 class="font-semibold text-gray-800">Phone</h4>
+            <p class="text-gray-600 text-sm">+91 9898034466</p>
+          </div>
         </div>
+
+       <div class="flex items-start gap-4">
+          <div class="bg-[#1f9a92] p-3 rounded-full text-white">
+            <i class="fa-solid fa-envelope"></i>
+          </div>
+          <div>
+            <h4 class="font-semibold text-gray-800">Email</h4>
+            <p class="text-gray-600 text-sm">info@cloudrohu.com</p>
+          </div> 
+       </div>
 
       </div>
+
     </div>
+
+    <!-- RIGHT SIDE FORM -->
+    <div class="bg-white p-10 rounded-xl shadow-xl">
+
+      <form class="space-y-6">
+
+        <div>
+          <label class="block text-sm font-semibold text-gray-700 mb-2">
+            How can we help you?
+          </label>
+
+        <select class="w-full border border-gray-300 px-4 py-3 bg-white focus:outline-none focus:border-[#1f9a92]">
+
+        <option disabled selected>How can we help you?</option>
+
+        <option>I have a real estate requirement</option>
+
+        <option>I want to list my property</option>
+
+        <option>I am a channel partner or service provider looking to collaborate</option>
+
+        <option>I want to work for Fairdeal</option>
+
+        <option>I have a complaint or concern</option>
+
+        <option>Other concern</option>
+
+        </select>
+
+        </div>
+
+
+        <div class="grid md:grid-cols-2 gap-6">
+
+          <input type="text" placeholder="Full Name" class="w-full border border-gray-300 px-4 py-3 focus:outline-none focus:border-[#1f9a92]" >
+
+          <input type="email" placeholder="Email Address" class="w-full border border-gray-300 px-4 py-3 focus:outline-none focus:border-[#1f9a92]" >
+
+        </div>
+
+         <input type="text" placeholder="Subject" class="w-full border border-gray-300 px-4 py-3 focus:outline-none focus:border-[#1f9a92]" >
+
+          <textarea rows="5" placeholder="Write your message..." class="w-full border border-gray-300 px-4 py-3 focus:outline-none focus:border-[#1f9a92]"></textarea>
+
+          <button class="bg-[#1f9a92] text-white px-8 py-3 font-semibold hover:bg-[#177c76] transition">
+            Send Message
+          </button>
+
+      </form>
+
+    </div>
+
   </div>
 
-<script defer>
-document.addEventListener("DOMContentLoaded", () => {
-
-  /* ===== MODAL ===== */
-  const modal = document.getElementById("commonModal");
-  if (modal) {
-    modal.addEventListener("show.bs.modal", e => {
-      document.getElementById("modalTitle").innerText =
-        e.relatedTarget?.getAttribute("data-modal-title") || "";
-    });
-  }
-
-  /* ===== SWIPER (ALL TYPES) ===== */
-  if (window.Swiper) {
-
-  // Home Loan Partners smooth auto slider
-    document.querySelectorAll(".loanPartnerSwiper").forEach(el=>{
-      new Swiper(el,{
-        loop:true,
-        speed:6000,
-        spaceBetween:22,
-
-        freeMode:true,
-        freeModeMomentum:false,
-
-        autoplay:{
-          delay:0,
-          disableOnInteraction:false,
-          pauseOnMouseEnter:true
-        },
-
-        breakpoints:{
-          320:{slidesPerView:1.2},
-          480:{slidesPerView:1.6},
-          640:{slidesPerView:2.3},
-          768:{slidesPerView:3},
-          1024:{slidesPerView:3.8},
-          1280:{slidesPerView:4.5}
-        }
-      });
-    });
-
-    // Blog mobile slider
-    document.querySelectorAll(".blogSwiper").forEach(el=>{
-      new Swiper(el,{
-        slidesPerView:1,
-        spaceBetween:18,
-        loop:true,
-
-        autoplay:{
-          delay:4000,
-          disableOnInteraction:false,
-          pauseOnMouseEnter:true
-        },
-
-        pagination:{
-          el: el.querySelector(".swiper-pagination"),
-          clickable:true
-        }
-      });
-    });
-
-      // New Launch Projects slider
-    document.querySelectorAll(".newLaunchSwiper").forEach(el=>{
-      new Swiper(el,{
-        slidesPerView:1,
-        spaceBetween:20,
-        loop:true,
-
-        autoplay:{
-          delay:3500,
-          disableOnInteraction:false,
-          pauseOnMouseEnter:true
-        },
-
-        breakpoints:{
-          0:{slidesPerView:1},
-          640:{slidesPerView:1},
-          768:{slidesPerView:2},
-          1024:{slidesPerView:3}
-        }
-      });
-    });
-
-
-  }
-
-  /* ===== BHK TABS ===== */
-  function activateTab(tab, card){
-    const wrap = card.querySelector(".bhk-tabs");
-    const underline = wrap.querySelector(".bhk-underline");
-
-    card.querySelectorAll(".bhk-tab").forEach(t=>t.classList.remove("active"));
-    card.querySelectorAll(".bhk-panel").forEach(p=>p.classList.add("hidden"));
-
-    tab.classList.add("active");
-
-    const r1=tab.getBoundingClientRect(), r2=wrap.getBoundingClientRect();
-    underline.style.width=r1.width+"px";
-    underline.style.left=(r1.left-r2.left)+"px";
-
-    card.querySelector(`[data-panel="${tab.dataset.target}"]`)?.classList.remove("hidden");
-  }
-
-  document.addEventListener("click", e=>{
-    const tab=e.target.closest(".bhk-tab");
-    if(!tab || tab.classList.contains("bhk-disabled")) return;
-    const card=tab.closest(".config-card");
-    if(card) activateTab(tab,card);
-  });
-
-  document.querySelectorAll(".config-card").forEach(card=>{
-    const first=card.querySelector(".bhk-tab:not(.bhk-disabled)");
-    if(first) activateTab(first,card);
-  });
-
-  /* ===== SIMPLE TABS ===== */
-  document.querySelectorAll(".tab-btn").forEach(btn=>{
-    btn.addEventListener("click",()=>{
-      document.querySelectorAll(".tab-btn").forEach(b=>b.classList.remove("active"));
-      btn.classList.add("active");
-
-      document.querySelectorAll(".tab-content").forEach(t=>t.classList.add("hidden"));
-      document.getElementById(btn.dataset.tab)?.classList.remove("hidden");
-    });
-  });
-
-  /* ===== AJAX CITY ===== */
-  const city=document.getElementById("city");
-  if(city){
-    city.addEventListener("change",()=>{
-      fetch(`/ajax/load-localities/?city_id=${city.value}`)
-        .then(r=>r.json())
-        .then(data=>{
-          const loc=document.getElementById("locality");
-          loc.innerHTML='<option value="">Select Locality</option>';
-          data.forEach(l=>loc.innerHTML+=`<option value="${l.id}">${l.name}</option>`);
-        });
-    });
-  }
-
-});
-const container = document.querySelector(".card-container");
-
-let isDown = false;
-let startX;
-let scrollLeft;
-
-// DRAG TO SLIDE (desktop premium feel)
-container.addEventListener("mousedown", e => {
-  isDown = true;
-  container.classList.add("active");
-  startX = e.pageX - container.offsetLeft;
-  scrollLeft = container.scrollLeft;
-});
-
-container.addEventListener("mouseleave", () => isDown = false);
-container.addEventListener("mouseup", () => isDown = false);
-
-container.addEventListener("mousemove", e => {
-  if (!isDown) return;
-  e.preventDefault();
-  const x = e.pageX - container.offsetLeft;
-  const walk = (x - startX) * 1.5;
-  container.scrollLeft = scrollLeft - walk;
-});
-
-// AUTO SLIDE
-setInterval(() => {
-  container.scrollLeft += 220;
-
-  if (container.scrollLeft + container.clientWidth >= container.scrollWidth) {
-    container.scrollLeft = 0;
-  }
-}, 2500); 
-
-var swiper = new Swiper(".rentPropSwiper", {
-    slidesPerView: 3,
-    spaceBetween: 30,
-    loop: true,
-    grabCursor: true,
-
-    pagination: {
-      el: ".swiper-pagination",
-      clickable: true,
-    },
-
-    navigation: {
-      nextEl: ".swiper-button-next",
-      prevEl: ".swiper-button-prev",
-    },
-
-    breakpoints: {
-      0: {
-        slidesPerView: 1,
-      },
-      640: {
-        slidesPerView: 2,
-      },
-      1024: {
-        slidesPerView: 3,
-      },
-    },
-    autoplay: {
-    delay: 3000,
-    disableOnInteraction: false,
-  },
-  });
-
-  AOS.init({
-    duration: 1000,
-    once: true
-  });
-</script>
+</section>
+<!-- ===================== CONTACT US SECTION END ===================== -->
 
 <script>
-document.addEventListener("DOMContentLoaded", function () {
 
-  window.selectType = function(btn){
+// ================= TAB SWITCHING =================
 
-    const buttons = document.querySelectorAll(".toggle-btn");
+const tabs = document.querySelectorAll(".tab");
 
-    buttons.forEach(b=>{
-      b.classList.remove("bg-[#B8925A]","text-white");
-      b.classList.add("bg-gray-200","text-gray-700");
-    });
+const data = {
 
-    btn.classList.remove("bg-gray-200","text-gray-700");
-    btn.classList.add("bg-[#B8925A]","text-white");
+  corporate:{
+  title:"Corporate Spaces",
+  desc:"From start-ups to leading multinational companies, we present a commercial real-estate solution for every corporate business.",
+  image:"https://frpl.in/wp-content/uploads/2025/03/home-page-2-1-1.webp"
+  },
 
-  };
+  industrial:{
+  title:"Warehouse and Industrial Spaces",
+  desc:"Our acquisition economic analysis and phenomenal consultation helps you find a home for your manufacturing operations.",
+  image:"https://frpl.in/wp-content/uploads/2022/06/home-page-3.jpg"
+  },
 
-});
-document.addEventListener("DOMContentLoaded", function () {
+  retail:{
+  title:"Retail Spaces",
+  desc:"Be where your customers are! Find a retail space that has it all.",
+  image:"https://frpl.in/wp-content/uploads/2022/06/home-page-4.jpg"
+  },
 
-  const faqContainer = document.getElementById("faqContainer");
-  const faqItems = Array.from(document.querySelectorAll("#faqData .faq-item"));
-  const loadMoreBtn = document.getElementById("loadMoreBtn");
-  const showLessBtn = document.getElementById("showLessBtn");
-
-  if (!faqContainer || faqItems.length === 0) return;
-
-  let itemsToShow = 6;
-
-  function renderFAQs() {
-    faqContainer.innerHTML = "";
-
-    faqItems.slice(0, itemsToShow).forEach(item => {
-      faqContainer.appendChild(item.cloneNode(true));
-    });
-
-    // Button visibility logic
-    if (itemsToShow >= faqItems.length) {
-      loadMoreBtn.classList.add("hidden");
-    } else {
-      loadMoreBtn.classList.remove("hidden");
-    }
-
-    if (itemsToShow > 6) {
-      showLessBtn.classList.remove("hidden");
-    } else {
-      showLessBtn.classList.add("hidden");
-    }
+  investments:{
+  title:"Investment Properties",
+  desc:"Leveraging our unparalleled market knowledge and extensive network of real estate professionals.",
+  image:"https://frpl.in/wp-content/uploads/2022/06/home-page-5.jpg"
   }
 
-  // Initial render
-  renderFAQs();
+};
 
-  // Load More
-  loadMoreBtn.addEventListener("click", function () {
-    itemsToShow += 6;
-    renderFAQs();
+tabs.forEach(tab => {
+
+  tab.addEventListener("click", () => {
+
+  tabs.forEach(t => t.classList.remove("border-orange-500"));
+  tab.classList.add("border-orange-500");
+
+  let key = tab.dataset.tab;
+
+  document.getElementById("title").innerText = data[key].title;
+  document.getElementById("desc").innerText = data[key].desc;
+  document.getElementById("image").src = data[key].image;
+
   });
 
-  // Show Less
-  showLessBtn.addEventListener("click", function () {
-    itemsToShow = 6;
-    renderFAQs();
+});
 
-    window.scrollTo({
-      top: faqContainer.offsetTop - 120,
-      behavior: "smooth"
-    });
+/* ================= CLIENT LOGO SLIDER ================= */
+
+const slider2 = document.getElementById("slider2");
+const prevBtn = document.getElementById("prevBtn");
+const nextBtn = document.getElementById("nextBtn");
+
+nextBtn.addEventListener("click", () => {
+  slider2.scrollBy({
+    left: 300,
+    behavior: "smooth"
+  });
+});
+
+prevBtn.addEventListener("click", () => {
+  slider2.scrollBy({
+    left: -300,
+    behavior: "smooth"
+  });
+});
+
+
+/* ================= TESTIMONIAL SLIDER ================= */
+
+const testimonialSlider = document.getElementById("testimonialSlider");
+const dots = document.querySelectorAll(".dot");
+
+let index = 0;
+const totalSlides = testimonialSlider.children.length;
+
+function updateSlider() {
+
+  let slideWidth;
+
+  if (window.innerWidth >= 768) {
+    slideWidth = testimonialSlider.children[0].offsetWidth;
+    testimonialSlider.style.transform = `translateX(-${index * slideWidth}px)`;
+  } else {
+    slideWidth = testimonialSlider.children[0].offsetWidth;
+    testimonialSlider.style.transform = `translateX(-${index * slideWidth}px)`;
+  }
+
+  dots.forEach(dot => dot.classList.remove("bg-black"));
+  dots.forEach(dot => dot.classList.add("bg-gray-400"));
+
+  if(dots[index]){
+    dots[index].classList.remove("bg-gray-400");
+    dots[index].classList.add("bg-black");
+  }
+}
+
+
+/* DOT CLICK */
+
+dots.forEach((dot,i)=>{
+
+  dot.addEventListener("click",()=>{
+
+    index = i;
+    updateSlider();
+
+  });
+
+});
+
+
+/* AUTO SLIDE */
+
+setInterval(()=>{
+
+  index++;
+
+  if(index >= totalSlides-2){
+    index = 0;
+  }
+
+  updateSlider();
+
+},4000);
+
+const industrySlider = document.getElementById("industrySlider");
+  const scrollLeft = document.getElementById("scrollLeft");
+  const scrollRight = document.getElementById("scrollRight");
+
+  scrollRight.addEventListener("click", () => {
+
+  industrySlider.scrollBy({
+  left: 250,
+  behavior: "smooth"
+  });
+
+  });
+
+  scrollLeft.addEventListener("click", () => {
+
+  industrySlider.scrollBy({
+  left: -250,
+  behavior: "smooth"
   });
 
 });
@@ -1447,133 +857,94 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 <style>
-  @keyframes scrollX {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+.no-scrollbar::-webkit-scrollbar{
+display:none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+} 
+.industry-card{
+  flex:0 0 50%;
+  text-align:center;
 }
 
-.animate-scroll-x {
-  animation: scrollX 35s linear infinite;
-}
-
- .swiper-slide {
-  overflow: visible !important;
-}
-.common-btn{
-  margin-top:12px;padding:8px 16px;border:1px solid white;border-radius:6px;
-  font-size:14px;transition:.3s
-}
 @media(min-width:768px){
-  .common-btn{opacity:0}
-  .group:hover .common-btn{opacity:1}
-}
-.common-btn:hover{background:#fff;color:#000}
-
-/* Scrollbars */
-.table-scroll,.bhk-tabs,.bhk-panel div{
-  scrollbar-width:thin;
-  scrollbar-color:#fb923c transparent
-}
-.table-scroll::-webkit-scrollbar,
-.bhk-tabs::-webkit-scrollbar,
-.bhk-panel div::-webkit-scrollbar{width:6px;height:5px}
-.table-scroll::-webkit-scrollbar-thumb,
-.bhk-tabs::-webkit-scrollbar-thumb,
-.bhk-panel div::-webkit-scrollbar-thumb{
-  background:#fb923c;border-radius:10px
+  .industry-card{
+   flex:0 0 33.33%;
+  }
 }
 
-/* BHK Tabs */
-.bhk-tab{
-  backdrop-filter:blur(10px);
-  background:rgba(255,255,255,.6);
-  padding:6px 10px;
-  color:#374151;
-  white-space:nowrap
+@media(min-width:1024px){
+  .industry-card{
+    flex:0 0 20%;
+  }
 }
-.bhk-tab.active{color:#fb923c}
-.bhk-disabled{opacity:.4;pointer-events:none}
 
-/* Underline */
-.bhk-underline{
-  background:#fb923c;
-  height:2px;
-  transition:.3s ease;
-  width:0;left:0
+.no-scrollbar::-webkit-scrollbar{
+display:none;
 }
-  .developer-section {
-font-family: Arial, sans-serif;
-padding: 20px;
-background-color: #f8f9fa;
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+.clients-section {
+    background-color: #e0e0e0; /* Light grey background jaisa image mein hai */
+    padding: 60px 20px;
+    text-align: center;
 }
 
 .section-title {
-font-size: 24px;
-  font-weight: bold;
-  margin-bottom: 20px;
+    color: #008080; /* Teal color */
+    font-size: 24px;
+    letter-spacing: 1px;
+    margin-bottom: 40px;
+    text-transform: uppercase;
 }
 
-.card-container {
-  display: flex;
-  gap: 20px;
-  overflow-x: auto; /* Mobile ke liye scrollable */
-  padding-bottom: 10px;
-  border: #db9430 ;
-
+.slider-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
 }
 
-.dev-card {
-  min-width: 200px;
-  background: white;
-  border-radius: 15px;
-  padding: 20px 15px 0 15px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.logo-track {
+    display: flex;
+    align-items: center;
+    gap: 40px; /* Logos ke beech ka gap */
+    overflow: hidden; /* Extra logos hide karne ke liye */
 }
 
-.logo {
-  height: 80px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 40px;
+.logo-track img {
+    max-height: 50px;
+    filter: grayscale(0%); /* Logos ko original color mein rakhne ke liye */
+    transition: transform 0.3s ease;
 }
 
-.logo img {
-  max-width: 120px;
+/* Buttons Styling */
+.nav-btn {
+    background-color: white;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 20px;
 }
 
-.footer-badge {
-  
-  background-color: #fae0bc; /* Light green background */
-  width: 100%;
-  padding: 10px;
-  border-radius: 50% 50% 0 0 / 20% 20% 0 0; /* Yeh curve banata hai */
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  font-size: 10px;
-  font-weight: bold;
-  color: #1e7d32;
-}
-
-.count {
-  background: #1a3e59; /* Dark blue circle */
-  color: white;
-  padding: 3px 5px;
-  border-radius: 50%;
-  font-size: 12px;
-}
-.rentPropSwiper .swiper-slide {
-  height: auto;
-  display: flex;
-}
-
-.rentPropSwiper .swiper-wrapper {
-  align-items: stretch;
+.nav-btn:hover {
+    background-color: #f0f0f0;
 }
 </style>
 

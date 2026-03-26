@@ -8,80 +8,212 @@
 
 {% block content %}
 
-<!-- 🟠 HERO SECTION -->
-<section class="relative h-[70vh] flex items-center justify-center text-white overflow-hidden">
-  <div class="absolute inset-0 bg-cover bg-center animate-zoomHero" style="background-image:url('{{ about_page.home_bg.url|default:'/static/assets/images/hero/slid-1.webp' }}');"></div>
-  <div class="absolute inset-0 bg-gradient-to-r from-black/70 via-black/60 to-orange-800/40"></div>
-  <div class="relative z-10 text-center max-w-3xl px-6" data-aos="fade-up">
-    <h1 class="text-5xl md:text-6xl font-extrabold mb-4 animate-fadeInDown">About <span class="text-orange-400">{{ settings_obj.site_name }}</span></h1>
-    <p class="text-lg opacity-90 leading-relaxed animate-fadeInUp">{{ about_page.subtitle|default:"Delivering trust, growth and innovation since 2008." }}</p>
-  </div>
-</section>
 
-<!-- WHO WE ARE -->
-<section class="max-w-7xl mx-auto px-6 py-20 grid md:grid-cols-2 gap-12 items-center">
-  <img src="{{ about_page.image.url|default:'https://dummyimage.com/600x400/eeeeee/000000&text=Our+Journey' }}" alt="Who We Are" loading="lazy" decoding="async" class="rounded-2xl shadow-2xl hover:scale-105 transition-transform duration-700" data-aos="zoom-in-right" />
-  <div data-aos="fade-left">
-    <h2 class="text-3xl font-bold mb-4 text-gray-800">{{ about_page.who_we_are_title|default:"Who We Are" }}</h2>
-    <p class="text-gray-600 leading-relaxed mb-4 italic">{{ about_page.who_we_are_subtitle|default:"We are more than property consultants – we build lifestyles." }}</p>
-    <div class="text-gray-600 prose max-w-none">{{ about_page.who_we_are_description|safe }}</div>
-  </div>
-</section>
+<style>
+  /* Smooth scrolling for the slider */
+  #award-slider::-webkit-scrollbar { display: none; }
+  #award-slider { -ms-overflow-style: none; scrollbar-width: none; }
+</style>
 
-<!-- MISSION & VISION -->
-<section class="max-w-7xl mx-auto px-6 py-20 grid md:grid-cols-2 gap-10">
-  <div class="bg-white shadow-xl rounded-xl p-10 hover:-translate-y-2 hover:shadow-2xl border-t-4 border-orange-500 transition-all duration-500" data-aos="fade-right">
-    <h2 class="text-2xl font-bold mb-3 text-orange-600">{{ about_page.our_mission_title|default:"Our Mission" }}</h2>
-    <div class="text-gray-600 leading-relaxed">{{ about_page.our_mission|safe }}</div>
-  </div>
-  <div class="bg-white shadow-xl rounded-xl p-10 hover:-translate-y-2 hover:shadow-2xl border-t-4 border-orange-500 transition-all duration-500" data-aos="fade-left">
-    <h2 class="text-2xl font-bold mb-3 text-orange-600">{{ about_page.our_vision_title|default:"Our Vision" }}</h2>
-    <div class="text-gray-600 leading-relaxed">{{ about_page.our_vision|safe }}</div>
-  </div>
-</section>
+<!-- ================= HERO SECTION START ================= -->
+<section class="relative w-full h-[550px] overflow-hidden">
 
-<!-- LEADERSHIP -->
-<section class="bg-gray-100 py-20">
-  <div class="max-w-7xl mx-auto px-6 text-center">
-    <h2 class="text-3xl font-bold mb-12" data-aos="fade-up">Meet Our <span class="text-orange-600">Leadership</span></h2>
-    <div class="grid sm:grid-cols-2 md:grid-cols-4 gap-10">
-      {% for leader in leaders %}
-      <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 group" data-aos="zoom-in">
-        <div class="relative">
-          <img src="{{ leader.image.url }}" alt="{{ leader.name }}" loading="lazy" decoding="async" class="w-24 h-24 mx-auto rounded-full mb-4 border-4 border-orange-200 group-hover:border-orange-500 transition-transform duration-500 group-hover:rotate-3">
-          <div class="absolute inset-0 bg-orange-500/10 opacity-0 group-hover:opacity-100 rounded-full blur-md transition-all"></div>
-        </div>
-        <h3 class="font-semibold text-lg">{{ leader.name }}</h3>
-        <p class="text-gray-500 text-sm">{{ leader.designation }}</p>
+    <!-- Background Image -->
+    <div class="absolute inset-0">
+        <img src="https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b" alt="City Skyline" class="w-full h-full object-cover" >
+        <div class="absolute inset-0 bg-[#0f7c7a]/80"></div>
+    </div>
+
+
+    <!-- Content Container -->
+    <div class="relative max-w-7xl mx-auto h-full flex items-center px-8">
+
+      <div class="max-w-xl text-white">
+
+        <!-- Heading -->
+        <h1 class="text-5xl md:text-6xl font-extrabold leading-tight tracking-wide">
+          THE <br>
+          STORY OF <br>
+          FAIRDEAL <br>
+          REALTORS
+        </h1>
+
+
+        <!-- Line -->
+        <div class="mt-10 mb-6 w-[420px] h-[3px] bg-white"></div>
+
+
+        <!-- Tagline -->
+        <p class="text-lg font-medium text-gray-200">
+          Professional Excellence. Unprecedented Spaces. Fair Practices.
+        </p>
+
       </div>
-      {% endfor %}
+
+    </div>
+
+</section>
+<!-- ================= HERO SECTION END ================= -->
+
+
+<!-- ====================== EXPLORERS SECTION START ====================== -->
+<section class="bg-[#efefef] py-24 border-t-[6px] border-[#0f7c7a]">
+
+    <div class="max-w-4xl mx-auto text-center px-6">
+
+        <!-- Heading -->
+        <h2 class="text-4xl font-bold text-[#0f8f85] tracking-wide">
+            Explorers. Discoverers. Professionals
+        </h2>
+
+
+        <!-- Sub Heading -->
+        <p class="mt-4 text-orange-500 font-semibold text-lg">
+            Defining Remarkable Service & Expertise
+        </p>
+
+
+        <!-- Description -->
+        <p class="mt-8 text-gray-700 leading-relaxed text-[17px]">
+            With 15000+ commercial properties, 75+ professionals and unmatched expertise 
+            in market research, Fairdeal offers personalized services and wider location 
+            choices for leasing and sales of commercial properties. We help you achieve 
+            your goal & fulfill your ambition.
+        </p>
+
+
+        <!-- CTA -->
+        <div class="mt-10 flex justify-center items-center gap-3">
+
+            <a href="#" class="text-[#0f8f85] font-semibold hover:underline">
+                Explore With Space Expert
+            </a>
+
+            <span class="text-orange-500 text-xl">
+                →
+            </span>
+
+        </div>
+
+    </div>
+
+</section>
+<!-- ====================== EXPLORERS SECTION END ====================== -->
+
+<!-- ================= LEADERSHIP SECTION START ================= -->
+<section class="bg-[#00A095] py-24 relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-6">
+        <h2 class="text-center text-4xl font-semibold text-white mb-16">
+            Leadership
+        </h2>
+
+        <div class="grid md:grid-cols-3 gap-12 justify-items-center">
+                    
+          <div class="relative group cursor-pointer w-[320px] h-[360px]">
+              
+              <div class="absolute -bottom-2 -right-3 w-full h-full bg-orange-500 transition-all duration-300 group-hover:-bottom-4 group-hover:-right-5"></div>
+
+              <div class="relative w-full h-full overflow-hidden shadow-lg transition-transform duration-300 group-hover:-translate-y-2 group-hover:-translate-x-2">
+                  
+                  <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a" alt="Leader"  class="w-full h-full object-cover">
+
+                  <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                      
+                      <div class="text-white transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                          <h3 class="text-xl font-bold">Ashok Gupta</h3>
+                          <p class="text-sm opacity-90">Founder & CEO</p>
+                      </div>
+
+                      <div class="absolute bottom-6 right-6 opacity-0 group-hover:opacity-100 transition-all duration-500 delay-100">
+                          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                          </svg>
+                      </div>
+                      
+                  </div>
+              </div>
+          </div>
+
+            <div class="relative group cursor-pointer">
+                <div class="absolute -bottom-2 -right-3 w-full h-full border-4 border-orange-500 bg-orange-500 transition-all duration-300 group-hover:-bottom-4 group-hover:-right-5"></div>
+                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2" alt="Leader"  class="relative w-[320px] h-[360px] object-cover shadow-lg transition-transform duration-300 group-hover:-translate-y-2 group-hover:-translate-x-2">
+            </div>
+
+            <div class="relative group cursor-pointer">
+                <div class="absolute -bottom-2 -right-3 w-full h-full border-4 border-orange-500 bg-orange-500 transition-all duration-300 group-hover:-bottom-4 group-hover:-right-5"></div>
+                <img src="https://images.unsplash.com/photo-1607746882042-944635dfe10e" alt="Leader"  class="relative w-[320px] h-[360px] object-cover shadow-lg transition-transform duration-300 group-hover:-translate-y-2 group-hover:-translate-x-2">
+            </div>
+
+        </div>
+    </div>
+</section>
+<!-- ================= LEADERSHIP SECTION END ========== -->
+
+<!-- ================= LEADERSHIP SECTION END ========== -->
+<section class="py-24 bg-gray-50 overflow-hidden">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="grid md:grid-cols-2 gap-12 items-stretch">
+        
+      <div id="mission-card" class="relative group opacity-0 translate-x-[-50px] transition-all duration-700 ease-out">
+          <div class="absolute -top-4 -left-4 w-20 h-20 bg-orange-500/10 rounded-full -z-10 group-hover:scale-150 transition-transform duration-500"></div>
+          
+          <div class="h-full bg-white p-10 rounded-2xl shadow-xl border-b-4 border-[#00A095] hover:shadow-2xl transition-shadow">
+              <div class="flex items-center mb-6">
+                  <div class="w-12 h-12 bg-[#00A095] rounded-lg flex items-center justify-center mr-4">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                      </svg>
+                  </div>
+                  <h2 class="text-3xl font-bold text-gray-800">Our Mission</h2>
+              </div>
+              <p class="text-gray-600 leading-relaxed text-lg">
+                  To provide world-class real estate services by leveraging technology and deep market insights. We strive to simplify the property buying and selling process, ensuring transparency and value for every client we serve.
+              </p>
+          </div>
+      </div>
+
+      <div id="vision-card" class="relative group opacity-0 translate-x-[50px] transition-all duration-700 ease-out">
+          <div class="absolute -bottom-4 -right-4 w-20 h-20 bg-[#00A095]/10 rounded-full -z-10 group-hover:scale-150 transition-transform duration-500"></div>
+
+          <div class="h-full bg-white p-10 rounded-2xl shadow-xl border-b-4 border-orange-500 hover:shadow-2xl transition-shadow">
+              <div class="flex items-center mb-6">
+                  <div class="w-12 h-12 bg-orange-500 rounded-lg flex items-center justify-center mr-4">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                      </svg>
+                  </div>
+                  <h2 class="text-3xl font-bold text-gray-800">Our Vision</h2>
+              </div>
+              <p class="text-gray-600 leading-relaxed text-lg">
+                  To become the most trusted name in the real estate industry globally, recognized for our commitment to excellence, innovation, and building sustainable communities that people are proud to call home.
+              </p>
+          </div>
+      </div>
+
     </div>
   </div>
 </section>
 
-<!-- CTA -->
-<section class="relative bg-gradient-to-r from-orange-700 via-orange-600 to-orange-500 text-white py-24 text-center overflow-hidden">
-  <div class="absolute inset-0 bg-[url('/static/assets/images/bg-pattern2.svg')] opacity-10 animate-moveBg"></div>
-  <div class="relative z-10" data-aos="zoom-in-up">
-    <h2 class="text-3xl font-bold mb-4">{{ about_page.looking_to_title|default:"Looking To Buy, Sell or Rent?" }}</h2>
-    <p class="mb-6 text-lg">{{ about_page.looking_to_description|default:"Get in touch with Makaan Hub today and find your dream property." }}</p>
-    <a href="{{ about_page.looking_to_button_link|default:'#' }}" class="px-8 py-3 bg-white text-orange-600 font-semibold rounded-lg shadow hover:bg-gray-100 transition-all duration-300">{{ about_page.looking_to_button_text|default:"Contact Us" }}</a>
-  </div>
-</section>
-
-<!-- ✨ Animations (keep minimal) -->
-<style>
-  @keyframes zoomHero{0%,100%{transform:scale(1.05)}50%{transform:scale(1.1)}}
-  .animate-zoomHero{animation:zoomHero 20s ease-in-out infinite}
-</style>
-
-<!-- Libraries -->
+<!-- ================= LEADERSHIP SECTION END ========== -->
 
 
+<script>
+    const observerOptions = {
+        threshold: 0.2
+    };
 
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.remove('opacity-0', 'translate-x-[-50px]', 'translate-x-[50px]');
+                entry.target.classList.add('opacity-100', 'translate-x-0');
+            }
+        });
+    }, observerOptions);
 
-<script defer>
-document.addEventListener("DOMContentLoaded",function(){AOS.init({duration:1000,once:true});['projects-delivered','happy-families','years-of-excellence','awards-recognitions'].forEach(id=>{const el=document.getElementById(id);if(el){new CountUp.CountUp(el,parseInt(el.innerText)).start();}});});
+    observer.observe(document.getElementById('mission-card'));
+    observer.observe(document.getElementById('vision-card'));
 </script>
 
 {% endblock %}

@@ -7,38 +7,55 @@
 {% block content %}
 <script src="https://unpkg.com/lucide@latest" defer></script>
 
-<section class="bg-gradient-to-b from-gray-50 via-white to-gray-50 py-20">
-  <div class="max-w-6xl mx-auto px-4">
-    <div class="text-center mb-14">
-      <h2 class="text-3xl md:text-5xl font-extrabold text-gray-900 mt-4 leading-tight">Our Expertise</h2>
-      <p class="text-gray-600 max-w-2xl mx-auto mt-3 text-base md:text-lg">Providing end-to-end real estate solutions with professionalism, transparency, and care.</p>
-    </div>
+<style>
+  .text-teal-custom { color: #00A095; }
+  .bg-teal-custom { background-color: #00A095; }
+  .bg-orange-custom { background-color: #F26522; }
+</style>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-
-      {% for s in services %}
-      <div class="bg-white shadow-sm overflow-hidden group transition-all duration-500 border border-gray-100 hover:shadow-2xl hover:-translate-y-1 hover:border-blue-200">
-        <div class="relative h-60 w-full overflow-hidden">
-          <img loading="lazy" src="{{ s.image.url }}" alt="{{ s.title }}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-          <div class="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent"></div>
-          <div class="absolute inset-0 bg-black/0 group-hover:bg-black/15 transition-all duration-500"></div>
-        </div>
-        <div class="p-8">
-          <div class="flex items-center gap-3 mb-4">
-            <div><h3 class="text-xl font-extrabold text-gray-900 leading-tight">{{ s.title }}</h3></div>
-          </div>
-          <p class="text-gray-600 text-sm leading-relaxed mb-7">{{ s.description }}</p>
-        </div>
-      </div>
-      {% endfor %}
-
-    </div>
+<section class="relative h-[400px] flex items-center overflow-hidden">
+  <div class="absolute inset-0 z-0">
+      <img src="https://images.unsplash.com/photo-1556761175-b413da4baf72" class="w-full h-full object-cover">
+      <div class="absolute inset-0 bg-[#00A095]/80"></div> </div>
+  <div class="relative z-10 max-w-7xl mx-auto px-6 w-full">
+      <h1 class="text-white text-5xl font-bold mb-4 uppercase tracking-wider">Our Expert Real Estate Services</h1>
+      <div class="h-1 w-1/2 bg-white mb-6"></div>
+      <p class="text-white text-xl font-light">Extraordinary services for Extraordinary Customers</p>
   </div>
 </section>
 
+<section class="bg-gray-50 py-12 px-4">
+  <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    
+    <div class="bg-white shadow-lg overflow-hidden flex flex-col">
+      <div class="h-64 overflow-hidden">
+        <img src="https://frpl.in/wp-content/uploads/2022/07/pexels-thisisengineering-3861972-1.jpg" alt="Storage Facility" class="w-full h-full object-cover p-3 ">
+      </div>  
+      <div class="p-8">
+        <h2 class="text-2xl font-bold text-orange-600 mb-4 leading-tight">
+          A Safe Storage Facility For Your Corporate Data
+        </h2>
+        <p class="text-gray-600 leading-relaxed text-sm">
+          Leasing data centers is an efficient approach for corporate institutions to maintain and secure their servers without bearing exorbitant capital costs and complexities of operating a self-owned data center environment. From private suites with additional privacy and dedicated security to a quarter, third, half or full cabinet, Fairdeal offers you data center spaces based on your unique power and space requirements. Find world-class, scalable data centers situated at convenient locations.
+        </p>
+      </div>
+    </div>
 
-<script>
-    lucide.createIcons();
-</script>
+    <div class="bg-white shadow-lg overflow-hidden flex flex-col">
+      <div class="h-64 overflow-hidden">
+        <img src="https://frpl.in/wp-content/uploads/2022/07/pexels-charlotte-may-5824890-1.jpg" alt="Office Interior" class="w-full h-full object-cover p-3 ">
+      </div>  
+      <div class="p-8">
+        <h2 class="text-2xl font-bold text-orange-600 mb-4 leading-tight">
+          Furnished Spaces That Emanates Convenience and Luxury
+        </h2>
+        <p class="text-gray-600 leading-relaxed text-sm">
+          At Fairdeal, you'll get meticulously planned and immaculately designed fully furnished, serviced/managed corporate spaces suited to meet your specific business requirements. From plush furnishings to state-of-the-art amenities, we present furnished corporate spaces that emanate elegance and high-functionality. Find a space that your employees, investors and clients would love. Enjoy enhanced employee productivity, operational innovation and foster positive work culture.
+        </p>
+      </div>
+    </div>
+
+  </div>
+</section>
 
 {% endblock %}
