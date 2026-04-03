@@ -12,7 +12,7 @@ from blog.models import Blog, Category
 from rent.models import RentalProperty
 from .models import (
     Setting, Slider, Testimonial, About, Leadership,
-    Contact_Page, FAQ, Our_Team,Why_Choose,ImpactMetric, Service, FooterLink,ContactEnquiry
+    Contact_Page, FAQ, Our_Team,Why_Choose,ImpactMetric, Service, FooterLink,ContactEnquiry,Our_Industry,Our_Clients
 )
 from user.models import Developer 
     
@@ -23,10 +23,8 @@ def index(request):
 
     settings_obj = Setting.objects.first()
 
-    # ================= CITIES =================
     cities = City.objects.filter(level_type="CITY").order_by("name")
 
-    # ================= PROPERTY TYPES =================
     residential_type = PropertyType.objects.filter(
         name__iexact="Residential", is_top_level=True
     ).first()
@@ -38,7 +36,6 @@ def index(request):
     residential_types = residential_type.get_descendants(include_self=True) if residential_type else PropertyType.objects.none()
     commercial_types = commercial_type.get_descendants(include_self=True) if commercial_type else PropertyType.objects.none()
 
-    # ================= NEW LAUNCH =================
     new_launch_residential = Project.objects.filter(
         active=True,
         construction_status__iexact="New Launch",
@@ -51,7 +48,6 @@ def index(request):
         propert_type__in=commercial_types
     ).order_by("-create_at")[:10]
 
-    # ================= FEATURED PROJECTS =================
     project_featured = (
         Project.objects.filter(active=True, featured_property=True)
         .annotate(
@@ -61,18 +57,14 @@ def index(request):
         .order_by("-create_at")[:6]
     )
 
-    # ================= POSSESSION COUNTS =================
     possession_counts = Project.objects.filter(active=True).aggregate(
         ready_to_move=Count("id", filter=Q(construction_status__iexact="Ready To Move")),
         under_construction=Count("id", filter=Q(construction_status__iexact="Under Construction")),
         new_launch=Count("id", filter=Q(construction_status__iexact="New Launch")),
     )
 
-    # ================= FEATURED DEVELOPERS (ONLY IF PROJECT EXISTS) =================
-    featured_developers = (
-    Developer.objects.filter(featured_builder=True).annotate(project_count=Count("project", distinct=True)).filter(project_count__gt=0).order_by("-create_at"))
+    featured_developers = (Developer.objects.filter(featured_builder=True).annotate(project_count=Count("project", distinct=True)).filter(project_count__gt=0).order_by("-create_at"))
 
-    # ================= OTHER HOME DATA =================
     featured_locality = (Locality.objects.filter(featured_locality=True, project__active=True).annotate(project_count=Count("project", distinct=True)).order_by("-project_count", "name")[:20])
     bank = Bank.objects.filter(home_loan_partner=True).order_by("title")
     blogs = Blog.objects.filter(is_published=True).order_by("-published_date", "-created_at")[:3]
@@ -81,10 +73,13 @@ def index(request):
     amenities = ProjectAmenities.objects.all()
     footerlink = FooterLink.objects.filter( is_active=True, parent__isnull=True).prefetch_related("children").order_by("order")
     why_choose_items = Why_Choose.objects.filter(is_active=True).order_by("order")[:6]
+    our_industry = Our_Industry.objects.filter(is_active=True).order_by("order")
+    our_clients = Our_Clients.objects.filter(is_active=True).order_by("order")
+
+
     testimonials = Testimonial.objects.all().order_by("-id")
     faqs = FAQ.objects.all().order_by("id")
 
-    # ================= CURRENT CITY =================
     current_city = project_featured.first().city.name if project_featured.exists() else "Mumbai"
 
     rental_properties = (
@@ -94,7 +89,6 @@ def index(request):
         .order_by("-id")[:10]
     )
 
-    # ================= RENDER =================
     return render(request, "home/index.html", {
         "settings_obj": settings_obj,
         "cities": cities,
@@ -106,17 +100,18 @@ def index(request):
         "featured_locality": featured_locality,
         "bank": bank,
         "blogs": blogs,
+        "our_clients": our_clients,
         "about_page": about_page,
         "impact_metrics": impact_metrics,
         "amenities": amenities,
         "why_choose_items": why_choose_items,
         "footerlink": footerlink,
         "testimonials": testimonials,
+        "our_industry": our_industry,
         "faqs": faqs,
         "possession_counts": possession_counts,
         "rental_properties": rental_properties,
     })
-
 
 def robots_txt(request):
     """
@@ -191,6 +186,7 @@ def contact_view(request):
     }
 
     return render(request, "home/contact.html", context)
+
 
 def faq_view(request):
     """Renders the FAQ page."""
@@ -270,3 +266,52 @@ def thank_you(request):
     if not request.META.get("HTTP_REFERER"):
         return redirect("contact")
     return render(request, "home/thank_you.html")
+
+def investment_properties(request):
+    settings_obj = Setting.objects.filter(status="True").first()
+
+    if not settings_obj:
+        settings_obj = None
+    
+    context = {
+        "settings_obj": settings_obj,
+        
+    }
+    return render(request, 'investment/investment-properties.html', context)
+
+def investment_properties(request):
+    settings_obj = Setting.objects.filter(status="True").first()
+
+    if not settings_obj:
+        settings_obj = None
+    
+    context = {
+        "settings_obj": settings_obj,
+        
+    }
+    return render(request, 'investment/investment-properties.html', context)
+
+def landlords(request):
+    settings_obj = Setting.objects.filter(status="True").first()
+
+    if not settings_obj:
+        settings_obj = None
+    
+    context = {
+        "settings_obj": settings_obj,
+        
+    }
+    return render(request, 'landlords/landlords.html', context)
+
+def resources(request):
+    settings_obj = Setting.objects.filter(status="True").first()
+
+    if not settings_obj:
+        settings_obj = None
+    
+    context = {
+        "settings_obj": settings_obj,
+        
+    }
+    return render(request, 'resources/resources.html', context)
+

@@ -1,6 +1,6 @@
 # home/urls.py
 from django.urls import path
-from . import views # views file se functions import karenge
+from . import views
 
 urlpatterns = [
     # Path '' matlab root URL (e.g., /), jo views.index function ko call karega
@@ -17,5 +17,8 @@ urlpatterns = [
     path('terms-cookies/', views.cookies, name='cookies'),
     path('services/', views.services, name='services'),
     path('calculator/', views.calculator, name='calculator'), 
+    path('investment-properties/', views.investment_properties, name='investment_properties'),
+    path('landlords/', views.landlords, name='landlords'),
+    path('resources/', views.resources, name='resources'),
     path('thank-you/', views.thank_you, name='thank_you'),
 ]

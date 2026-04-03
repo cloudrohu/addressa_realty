@@ -10,9 +10,15 @@
 
 
 <style>
-  /* Smooth scrolling for the slider */
   #award-slider::-webkit-scrollbar { display: none; }
   #award-slider { -ms-overflow-style: none; scrollbar-width: none; }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+   }
 </style>
 
 <!-- ================= HERO SECTION START ================= -->
@@ -149,7 +155,74 @@
 </section>
 <!-- ================= LEADERSHIP SECTION END ========== -->
 
-<!-- ================= LEADERSHIP SECTION END ========== -->
+<!-- ================= AWARDS SECTION END ========== -->
+<div class="max-w-7xl mx-auto px-4 relative mt-3">
+    <h2 class="text-3xl md:text-4xl font-bold text-center text-[#14a89c] mb-12">
+        Awards & Recognition
+    </h2>
+
+    <div class="absolute inset-y-0 left-0 flex items-center">
+        <button onclick="scrollSection('left')" class="p-2 text-gray-600 hover:text-black focus:outline-none">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+            </svg>
+        </button>
+    </div>
+
+    <div class="absolute inset-y-0 right-0 flex items-center">
+        <button onclick="scrollSection('right')" class="p-2 text-gray-600 hover:text-black focus:outline-none">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+            </svg>
+        </button>
+    </div>
+
+    <div id="scrollContainer" class="flex gap-6 overflow-x-auto scroll-smooth no-scrollbar px-10 pb-4">
+        
+        <div class="min-w-[300px] md:min-w-[380px] bg-white border border-gray-300 rounded-lg p-8 flex flex-col items-center justify-between text-center transition-shadow hover:shadow-md">
+            <div class="h-32 flex items-center justify-center mb-6">
+                <img src="https://via.placeholder.com/200x80?text=ACCOMMODATION+TIMES" alt="Accommodation Times" class="max-h-full">
+            </div>
+            <p class="text-gray-800 text-sm md:text-base font-medium">
+                Best Commercial Property Consultant of India - 2013 (Accommodation Times)
+            </p>
+        </div>
+
+        <div class="min-w-[300px] md:min-w-[380px] bg-white border border-gray-300 rounded-lg p-8 flex flex-col items-center justify-between text-center transition-shadow hover:shadow-md">
+            <div class="h-32 flex items-center justify-center mb-6">
+                <img src="https://via.placeholder.com/150x120?text=ABP+NEWS" alt="ABP News" class="max-h-full border border-red-500">
+            </div>
+            <p class="text-gray-800 text-sm md:text-base font-medium">
+                Property Consultant of the year - 2014 (ABP News)
+            </p>
+        </div>
+
+        
+
+        <div class="min-w-[300px] md:min-w-[380px] bg-white border border-gray-300 rounded-lg p-8 flex flex-col items-center justify-between text-center transition-shadow hover:shadow-md">
+            <div class="h-32 flex items-center justify-center mb-6">
+                <img src="https://via.placeholder.com/150x120?text=ABP+NEWS" alt="ABP News" class="max-h-full border border-red-500">
+            </div>
+            <p class="text-gray-800 text-sm md:text-base font-medium">
+                Property Consultant of the year - 2014 (ABP News)
+            </p>
+        </div>
+
+        <div class="min-w-[300px] md:min-w-[380px] bg-white border border-gray-300 rounded-lg p-8 flex flex-col items-center justify-between text-center transition-shadow hover:shadow-md">
+            <div class="h-32 flex items-center justify-center mb-6">
+                <img src="https://via.placeholder.com/200x80?text=SMART+REALTORS" alt="Smart Realtors" class="max-h-full">
+            </div>
+            <p class="text-gray-800 text-sm md:text-base font-medium">
+                Best - Commercial Realtors - Central Suburbs - Mumbai - 2015 (SMART - South Metrocity Association of Realtors)
+            </p>
+        </div>
+
+    </div>
+    
+</div>
+<!-- ================= AWARDS SECTION END ========== -->
+
+<!-- ================= MISSION, VISSION SECTION START ========== -->
 <section class="py-24 bg-gray-50 overflow-hidden">
   <div class="max-w-7xl mx-auto px-6">
     <div class="grid md:grid-cols-2 gap-12 items-stretch">
@@ -195,7 +268,7 @@
   </div>
 </section>
 
-<!-- ================= LEADERSHIP SECTION END ========== -->
+<!-- ================= MISSION, VISSION SECTION END ========== -->
 
 
 <script>
@@ -214,6 +287,15 @@
 
     observer.observe(document.getElementById('mission-card'));
     observer.observe(document.getElementById('vision-card'));
+    function scrollSection(direction) {
+        const container = document.getElementById('scrollContainer');
+        const scrollAmount = 400; // Ek card jitna scroll
+        if (direction === 'left') {
+            container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+        } else {
+            container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+        }
+    }
 </script>
 
 {% endblock %}

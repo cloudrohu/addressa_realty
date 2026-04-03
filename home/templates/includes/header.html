@@ -19,10 +19,10 @@
           <a href="{% url "about" %}" class="text-gray-700 hover:text-gray-900 pb-1 px-1">About</a>
           <a href="{% url "services" %}" class="text-gray-700 hover:text-gray-900 pb-1 px-1">Services</a>
           <a href="#" class="text-gray-700 hover:text-gray-900 pb-1 px-1">Spaces</a>
-          <a href="#" class="text-gray-700 hover:text-gray-900 pb-1 px-1">Career</a>
-          <a href="#" class="text-gray-700 hover:text-gray-900 pb-1 px-1">Investment</a>
-          <a href="#" class="text-gray-700 hover:text-gray-900 pb-1 px-1">Landlords</a>
-          <a href="#" class="text-gray-700 hover:text-gray-900 pb-1 px-1">Resources</a>
+          <a href="{% url "jobs:career" %}" class="text-gray-700 hover:text-gray-900 pb-1 px-1">Career</a>
+          <a href="{% url "investment_properties" %}" class="text-gray-700 hover:text-gray-900 pb-1 px-1">Investment</a>
+          <a href="{% url "landlords" %}" class="text-gray-700 hover:text-gray-900 pb-1 px-1">Landlords</a>
+          <a href="{% url "resources" %}" class="text-gray-700 hover:text-gray-900 pb-1 px-1">Resources</a>
           <a href="{% url "contact" %}" class="text-gray-700 hover:text-gray-900 pb-1 px-1">Contact</a>
         </nav>
 
@@ -60,11 +60,11 @@
       <a href="/" class="block text-gray-800 hover:text-orange-500 py-2 border-l-4 border-orange-500 pl-3">Home</a>
       <a href="{% url "about" %}" class="block text-gray-700 hover:text-gray-900 py-2 pl-4">About</a>
       <a href="{% url "services" %}" class="block text-gray-700 hover:text-gray-900 py-2 pl-4">Services</a>
-      <a href="#" class="block text-gray-700 hover:text-gray-900 py-2 pl-4">Spaces</a>
-      <a href="#" class="block text-gray-700 hover:text-gray-900 py-2 pl-4">Career</a>
-      <a href="#" class="block text-gray-700 hover:text-gray-900 py-2 pl-4">Investment</a>
-      <a href="#" class="block text-gray-700 hover:text-gray-900 py-2 pl-4">Landlords</a>
-      <a href="#" class="block text-gray-700 hover:text-gray-900 py-2 pl-4">Resources</a>
+      <a href="{% url "jobs:career" %}" class="block text-gray-700 hover:text-gray-900 py-2 pl-4">Spaces</a>
+      <a href="{% url "services" %}" class="block text-gray-700 hover:text-gray-900 py-2 pl-4">Career</a>
+      <a href="{% url "investment_properties" %}" class="block text-gray-700 hover:text-gray-900 py-2 pl-4">Investment</a>
+      <a href="{% url "landlords" %}" class="block text-gray-700 hover:text-gray-900 py-2 pl-4">Landlords</a>
+      <a href="{% url "resources" %}" class="block text-gray-700 hover:text-gray-900 py-2 pl-4">Resources</a>
       <a href="{% url "contact" %}" class="block text-gray-700 hover:text-gray-900 py-2 pl-4">Contact</a>
     </div>
 

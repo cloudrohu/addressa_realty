@@ -4,9 +4,6 @@ from django.utils.safestring import mark_safe
 from utility.compress_mixin import ImageCompressionMixin
 
 
-# =============================
-# 🧠 MAIN MODEL — Website Setting
-# =============================
 class Setting(ImageCompressionMixin, models.Model):    
     site_name = models.CharField(max_length=150)
     logo = models.ImageField(upload_to='settings/', blank=True, null=True)
@@ -70,11 +67,6 @@ class Setting(ImageCompressionMixin, models.Model):
             return self.logo.url
         return None
 
-
-
-# =============================
-# 🖼️ Hero / Slider Section (Multiple)
-# =============================
 class Slider(models.Model):
     title = models.CharField(max_length=200)
     subtitle = models.CharField(max_length=300, blank=True, null=True)
@@ -90,10 +82,6 @@ class Slider(models.Model):
 
     def __str__(self):
         return self.title
-# =============================
-# 👥 Leadership Team Section
-# =============================
-
 
 class Leadership(models.Model):
     name = models.CharField(max_length=100, help_text="Full name of the team member")
@@ -131,62 +119,39 @@ class Why_Choose(models.Model):
         return self.title
 
 class About(models.Model):
-    # =============================
-    # 🎨 Background / Banner Section
-    # =============================
     search_bg = models.ImageField(upload_to='about/backgrounds/',blank=True, null=True,help_text="Background image for the top search banner (optional)")
     home_bg = models.ImageField(upload_to='about/backgrounds/',blank=True, null=True,help_text="Background image for home about section")
 
-    # =============================
-    # 🏠 Main About Section
-    # =============================
     title = models.CharField(max_length=200, help_text="Main heading (e.g., 'About Makaan Hub')")
     subtitle = models.CharField(max_length=300, blank=True, null=True, help_text="Subtitle or tagline")
     content = CKEditor5Field(blank=True, null=True, help_text="Detailed About Us content with formatting")
     image = models.ImageField(upload_to='about/', blank=True, null=True, help_text="Main image for About section")
 
-    # =============================
-    # 🧑‍💼 Who We Are Section
-    # =============================
     who_we_are_title = models.CharField(max_length=200, default="Who We Are")
     who_we_are_subtitle = models.CharField(max_length=300, blank=True, null=True)
     who_we_are_description = CKEditor5Field(blank=True, null=True, help_text="Description about company identity")
 
-    # =============================
-    # 📊 Achievements / Highlights
-    # =============================
     projects_delivered = models.PositiveIntegerField(default=0)
     happy_families = models.PositiveIntegerField(default=0)
     years_of_excellence = models.PositiveIntegerField(default=0)
     awards_recognitions = models.PositiveIntegerField(default=0)
     highlight_icon_color = models.CharField(max_length=50, blank=True, null=True, help_text="Optional color for highlight icons (e.g., #0066ff)")
 
-    # =============================
-    # 🎯 Mission & Vision
-    # =============================
     our_mission_title = models.CharField(max_length=200, default="Our Mission")
     our_mission = CKEditor5Field(blank=True, null=True)
     our_vision_title = models.CharField(max_length=200, default="Our Vision")
     our_vision = CKEditor5Field(blank=True, null=True)
 
-    # =============================
-    # 💼 Looking To Section
-    # =============================
     looking_to_title = models.CharField(max_length=200, help_text="Title for 'Looking To...' section")
     looking_to_description = CKEditor5Field(blank=True, null=True)
     looking_to_button_text = models.CharField(max_length=50, default="Contact Us", help_text="Call-to-action button text")
     looking_to_button_link = models.URLField(blank=True, null=True, help_text="Button link (e.g., contact page)")
 
-    # =============================
-    # 🌐 SEO + Meta Info
-    # =============================
     meta_title = models.CharField(max_length=255, blank=True, null=True, help_text="SEO meta title")
     meta_description = models.TextField(blank=True, null=True, help_text="SEO meta description")
     meta_keywords = models.TextField(blank=True, null=True, help_text="SEO keywords separated by commas")
 
-    # =============================
-    # ⚙️ Admin Settings
-    # =============================
+  
     is_active = models.BooleanField(default=True, help_text="If disabled, this section won't appear on site")
     updated_at = models.DateTimeField(auto_now=True)
     created_at = models.DateTimeField(auto_now_add=True)
@@ -236,6 +201,7 @@ class Testimonial(models.Model):
 
     def __str__(self):
         return f"{self.name} ({self.rating}⭐)"
+
 
 class FAQ(models.Model):
     question = models.CharField(max_length=300)
@@ -291,8 +257,12 @@ class FooterLink(models.Model):
 class ContactEnquiry(models.Model):
 
     ENQUIRY_TYPE_CHOICES = [
-        ("flat", "Looking for a Flat"),
+        ("requirement", "Real Estate Requirement"),
         ("owner", "Property Owner"),
+        ("partner", "Channel Partner"),
+        ("job", "Job Inquiry"),
+        ("complaint", "Complaint"),
+        ("other", "Other"),
     ]
 
     type = models.CharField(max_length=20,choices=ENQUIRY_TYPE_CHOICES,blank=True,null=True)
@@ -304,4 +274,30 @@ class ContactEnquiry(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"{self.name} - {self.get_type_display()}"
+        return f"{self.name} - {self.type}"
+
+class Our_Industry(models.Model):
+    title = models.CharField(max_length=120)
+    image = models.ImageField(upload_to="industry/")
+    order = models.PositiveIntegerField(default=0)
+    is_active = models.BooleanField(default=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ["order"]
+
+    def __str__(self):
+        return self.title
+
+class Our_Clients(models.Model):
+    title = models.CharField(max_length=120)
+    image = models.ImageField(upload_to="clients/")
+    order = models.PositiveIntegerField(default=0)
+    is_active = models.BooleanField(default=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ["order"]
+
+    def __str__(self):
+        return self.title

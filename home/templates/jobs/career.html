@@ -1,0 +1,186 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<section class="bg-gradient-to-br from-gray-50 to-gray-100 py-12 min-h-screen">
+  <div class="max-w-7xl mx-auto px-6">
+
+    <div class="grid grid-cols-12 gap-10">
+
+        <!-- ================= FILTER ================= -->
+        <div class="col-span-3">
+
+            <div class="bg-white p-6 shadow-md border sticky top-6 hidden lg:block">
+
+            <h3 class="text-lg font-semibold mb-6">🎯 Filters</h3>
+
+            <!-- City -->
+            <div class="mb-2">
+                <label class="text-sm font-medium text-gray-700">City</label>
+                <select class="w-full mt-2 border p-3 focus:ring-2 focus:ring-orange-400">
+                <option>All Cities</option>
+                <option>Pune</option>
+                <option>Mumbai</option>
+                <option>Navi Mumbai</option>
+                </select>
+            </div>
+
+            <!-- Experience -->
+            <div class="mb-2">
+                <label class="text-sm font-medium text-gray-700">Experience</label>
+                <select class="w-full mt-2 border p-3 rounded-lg focus:ring-2 focus:ring-orange-400">
+                <option>All</option>
+                <option>0-1 Years</option>
+                <option>1-3 Years</option>
+                <option>3-5 Years</option>
+                </select>
+            </div>
+
+            <!-- Job Type -->
+            <div class="mb-2">
+                <label class="text-sm font-medium text-gray-700">Job Type</label>
+                <select class="w-full mt-2 border p-3 rounded-lg focus:ring-2 focus:ring-orange-400">
+                <option>All</option>
+                <option>Full Time</option>
+                <option>Part Time</option>
+                </select>
+            </div>
+
+            <button class="w-full bg-orange-500 text-white py-3 rounded-lg mt-3 hover:bg-orange-600 transition font-medium">
+                Apply Filters
+            </button>
+
+            </div>
+
+        </div>
+
+        <!-- ================= JOB LIST ================= -->
+        <div class="col-span-9 grid">
+
+            <div class="max-w-5xl mx-auto font-sans">
+
+                <!-- SEARCH BAR -->
+                <div class="flex flex-col md:flex-row gap-3 mb-6 bg-white p-4 shadow-md border">
+
+                    <input type="text" placeholder="🔍 Job title or skill" class="w-full md:flex-1 p-3 border focus:outline-none focus:ring-2 focus:ring-orange-400">
+
+                    <input type="text" placeholder="📍 Location" class="w-full md:flex-1 p-3 border focus:outline-none focus:ring-2 focus:ring-orange-400">
+
+                    <button class="w-full md:w-auto bg-orange-500 text-white px-6 py-3 font-semibold hover:bg-orange-600 transition">
+                        Search
+                    </button>
+
+                </div>
+
+                <!-- JOB LIST -->
+                <div class="divide-y divide-gray-200 bg-white shadow-md border overflow-hidden">
+
+                    <!-- JOB ITEM -->
+                    <div class="p-5 border-b hover:bg-gray-50 transition">
+
+                        <div class="flex justify-between items-start">
+
+                            <!-- LEFT SIDE -->
+                            <div class="max-w-3xl">
+
+                                <!-- TITLE -->
+                                <h2 class="text-lg font-semibold text-orange-600 cursor-pointer hover:underline">
+                                    Sales - Executive / Assistant Manager - Pune
+                                </h2>
+
+                                <!-- LOCATION + EXPERIENCE -->
+                                <p class="text-sm text-gray-600 mt-1">
+                                    Pune City, Maharashtra, India
+                                </p>
+
+                                <p class="text-sm text-gray-600">
+                                    4-5 years
+                                </p>
+
+                                <!-- DESCRIPTION -->
+                                <p class="mt-3 text-sm text-gray-700 leading-relaxed">
+                                    Position Title: Sales Executive/Assistant Manager Department: Marketing 
+                                    Reports To: CEO Location: Mumbai, Andheri East Employment Type: Full-time...
+                                </p>
+
+                                <!-- ACTION -->
+                                <a href="#" class="inline-block mt-3 text-orange-500 text-sm font-medium hover:underline">
+                                    View Details →
+                                </a>
+
+                            </div>
+
+                            <!-- RIGHT SIDE -->
+                            <div class="text-right min-w-[120px]">
+
+                                <p class="text-sm font-semibold text-gray-800">
+                                    Full time
+                                </p>
+
+                                <p class="text-xs text-gray-500 mt-1">
+                                    06/06/2025
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- SECOND JOB -->
+                    <div class="p-5 border-b hover:bg-gray-50 transition">
+
+                        <div class="flex justify-between items-start">
+
+                            <div class="max-w-3xl">
+
+                                <h2 class="text-lg font-semibold text-orange-600 cursor-pointer hover:underline">
+                                    Property Sourcing Executive - Pune
+                                </h2>
+
+                                <p class="text-sm text-gray-600 mt-1">
+                                    Pune City, Maharashtra, India
+                                </p>
+
+                                <p class="text-sm text-gray-600">
+                                    1-3 years
+                                </p>
+
+                                <p class="mt-3 text-sm text-gray-700 leading-relaxed">
+                                    Field Property Executive role focused on sourcing and managing property leads...
+                                </p>
+
+                                <a href="#" class="inline-block mt-3 text-orange-500 text-sm font-medium hover:underline">
+                                    View Details →
+                                </a>
+
+                            </div>
+
+                            <div class="text-right min-w-[120px]">
+
+                                <p class="text-sm font-semibold text-gray-800">
+                                    Full time
+                                </p>
+
+                                <p class="text-xs text-gray-500 mt-1">
+                                    23/06/2025
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+  </div>
+</section>
+
+{% endblock %}

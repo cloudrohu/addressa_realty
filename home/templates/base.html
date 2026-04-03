@@ -21,6 +21,9 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/countup.js/2.6.2/countUp.umd.js" defer></script>
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 
 
 </head>
@@ -35,25 +38,298 @@
   {% include 'includes/footer.html' %}
 
 
-  <script>
+<script defer>
+  AOS.init({
+    duration: 800,
+    once: true
+  });
+</script>
+
+<script defer>
+  document.addEventListener("DOMContentLoaded", function () {
     AOS.init({
       duration: 800,
       once: true
     });
-  </script>
+  });
+</script>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/countup.js/2.6.2/countUp.umd.js" defer></script>
-  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-  <script defer>
-    document.addEventListener("DOMContentLoaded", function () {
-      AOS.init({
-        duration: 800,
-        once: true
+  
+<script defer>
+    // ================= TAB SWITCHING =================
+
+    const tabs = document.querySelectorAll(".tab");
+
+    const data = {
+
+      corporate:{
+        title:"Corporate Spaces",
+        desc:"From start-ups to leading multinational companies, we present a commercial real-estate solution for every corporate business.",
+        image:"https://frpl.in/wp-content/uploads/2025/03/home-page-2-1-1.webp"
+      },
+
+      industrial:{
+        title:"Warehouse and Industrial Spaces",
+        desc:"Our acquisition economic analysis and phenomenal consultation helps you find a home for your manufacturing operations.",
+        image:"https://frpl.in/wp-content/uploads/2022/06/home-page-3.jpg"
+      },
+
+      retail:{
+        title:"Retail Spaces",
+        desc:"Be where your customers are! Find a retail space that has it all.",
+        image:"https://frpl.in/wp-content/uploads/2022/06/home-page-4.jpg"
+      },
+
+      investments:{
+        title:"Investment Properties",
+        desc:"Leveraging our unparalleled market knowledge and extensive network of real estate professionals.",
+        image:"https://frpl.in/wp-content/uploads/2022/06/home-page-5.jpg"
+      }
+
+    };
+
+    // function to update content
+    function updateContent(key){
+      const content = data[key];
+
+      const title = document.getElementById("title");
+      const desc = document.getElementById("desc");
+      const image = document.getElementById("image");
+
+      // animation add
+      title.classList.add("opacity-0");
+      desc.classList.add("opacity-0");
+      image.classList.add("opacity-0");
+
+      setTimeout(() => {
+        title.innerText = content.title;
+        desc.innerText = content.desc;
+        image.src = content.image;
+
+        title.classList.remove("opacity-0");
+        desc.classList.remove("opacity-0");
+        image.classList.remove("opacity-0");
+      }, 200);
+    }
+
+    // tab click
+    tabs.forEach(tab => {
+
+      tab.addEventListener("click", () => {
+
+        // remove active from all
+        tabs.forEach(t => {
+          t.classList.remove("border-orange-500","active","text-orange-500");
+        });
+
+        // add active to clicked
+        tab.classList.add("border-orange-500","active","text-orange-500");
+
+        let key = tab.dataset.tab;
+        updateContent(key);
+
       });
-    });
-  </script>
 
+    });
+
+    // default load fix
+    updateContent("corporate");
+
+    
+
+  /* ================= CLIENT LOGO SLIDER ================= */
+
+  const slider2 = document.getElementById("slider2");
+  const prevBtn = document.getElementById("prevBtn");
+  const nextBtn = document.getElementById("nextBtn");
+
+  nextBtn.addEventListener("click", () => {
+    slider2.scrollBy({
+      left: 300,
+      behavior: "smooth"
+    });
+  });
+
+  prevBtn.addEventListener("click", () => {
+    slider2.scrollBy({
+      left: -300,
+      behavior: "smooth"
+    });
+  });
+
+
+  /* ================= TESTIMONIAL SLIDER ================= */
+
+  const testimonialSlider = document.getElementById("testimonialSlider");
+  const dots = document.querySelectorAll(".dot");
+
+  let index = 0;
+  const totalSlides = testimonialSlider.children.length;
+
+  function updateSlider() {
+
+    let slideWidth;
+
+    if (window.innerWidth >= 768) {
+      slideWidth = testimonialSlider.children[0].offsetWidth;
+      testimonialSlider.style.transform = `translateX(-${index * slideWidth}px)`;
+    } else {
+      slideWidth = testimonialSlider.children[0].offsetWidth;
+      testimonialSlider.style.transform = `translateX(-${index * slideWidth}px)`;
+    }
+
+    dots.forEach(dot => dot.classList.remove("bg-black"));
+    dots.forEach(dot => dot.classList.add("bg-gray-400"));
+
+    if(dots[index]){
+      dots[index].classList.remove("bg-gray-400");
+      dots[index].classList.add("bg-black");
+    }
+  }
+
+
+  /* DOT CLICK */
+
+  dots.forEach((dot,i)=>{
+
+    dot.addEventListener("click",()=>{
+
+      index = i;
+      updateSlider();
+
+    });
+
+  });
+
+
+  /* AUTO SLIDE */
+
+  setInterval(()=>{
+
+    index++;
+
+    if(index >= totalSlides-2){
+      index = 0;
+    }
+
+    updateSlider();
+
+  },4000);
+
+  const industrySlider = document.getElementById("industrySlider");
+    const scrollLeft = document.getElementById("scrollLeft");
+    const scrollRight = document.getElementById("scrollRight");
+
+    scrollRight.addEventListener("click", () => {
+
+    industrySlider.scrollBy({
+    left: 250,
+    behavior: "smooth"
+    });
+
+    });
+
+    scrollLeft.addEventListener("click", () => {
+
+    industrySlider.scrollBy({
+    left: -250,
+    behavior: "smooth"
+    });
+
+  });
+</script>
+
+<style defer>
+  .no-scrollbar::-webkit-scrollbar{
+  display:none;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  } 
+  .industry-card{
+    flex:0 0 50%;
+    text-align:center;
+  }
+
+  @media(min-width:768px){
+    .industry-card{
+    flex:0 0 33.33%;
+    }
+  }
+
+  @media(min-width:1024px){
+    .industry-card{
+      flex:0 0 20%;
+    }
+  }
+
+  .no-scrollbar::-webkit-scrollbar{
+  display:none;
+  }
+  /* Basic Reset */
+  * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+  }
+
+  .clients-section {
+      background-color: #e0e0e0; /* Light grey background jaisa image mein hai */
+      padding: 60px 20px;
+      text-align: center;
+  }
+
+  .section-title {
+      color: #008080; /* Teal color */
+      font-size: 24px;
+      letter-spacing: 1px;
+      margin-bottom: 40px;
+      text-transform: uppercase;
+  }
+
+  .slider-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative;
+  }
+
+  .logo-track {
+      display: flex;
+      align-items: center;
+      gap: 40px; /* Logos ke beech ka gap */
+      overflow: hidden; /* Extra logos hide karne ke liye */
+  }
+
+  .logo-track img {
+      max-height: 50px;
+      filter: grayscale(0%); /* Logos ko original color mein rakhne ke liye */
+      transition: transform 0.3s ease;
+  }
+
+  /* Buttons Styling */
+  .nav-btn {
+      background-color: white;
+      border: none;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      font-size: 18px;
+      cursor: pointer;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 20px;
+  }
+
+  .nav-btn:hover {
+      background-color: #f0f0f0;
+  }
+</style>
 
 
 </body>

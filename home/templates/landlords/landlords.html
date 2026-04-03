@@ -1,0 +1,187 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<script>
+    tailwind.config = {
+        theme: {
+            extend: {
+                colors: {
+                    'fd-teal': '#169e8f', // Screen se pick kiya gaya exact teal color
+                    'fd-orange': '#f37032', // Accent color
+                },
+                fontFamily: {
+                    sans: ['Helvetica', 'Arial', 'sans-serif'],
+                },
+            }
+        }
+    }
+</script>
+
+<style>
+#slider {
+  scroll-padding-left: 50%;
+  scroll-padding-right: 50%;
+}
+#slider {
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+</style>
+
+<!-- HERO START HERE -->
+<section class="relative w-full h-[600px] bg-cover bg-center overflow-hidden" style="background-image: url('https://media.istockphoto.com/id/1475244437/photo/young-married-couple-talking-with-a-real-estate-agent-visiting-apartment-for-sale-or-for-rent.jpg?s=612x612&w=0&k=20&c=nQopiOp0_ayZfB_zXWMKUn9ZrHhWwBh9o6ikQlspopc=');">
+        
+    <div class="absolute inset-0 bg-overlay-orange"></div>
+
+    <div class="relative z-10 container mx-auto h-full flex items-center px-6 lg:px-16">
+        
+        <div class="w-full md:w-3/4 lg:w-1/2 flex flex-col items-start text-left">
+            
+            <h1 class="text-white text-5xl md:text-6xl font-bold uppercase tracking-tight leading-[1.1]">
+                Quality Tenants
+            </h1>
+            <h2 class="text-white text-5xl md:text-6xl font-bold uppercase tracking-tight leading-[1.1] mb-8">
+                Supreme Rents
+            </h2>
+
+            <div class="w-2/3 h-[3px] bg-white mb-8"></div>
+
+            <p class="text-white text-xl md:text-2xl font-medium">
+                Connecting Tenants With Commercial Property Owners
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+<!-- HERO END HERE -->
+
+<!-- TEXT START HERE -->
+<section class="w-full bg-white pt-16 pb-12 px-6 lg:px-20">
+        
+    <div class="container mx-auto max-w-7xl">
+
+        <h2 class="text-[#3DB7AF] text-4xl font-bold mb-6 tracking-tight">
+            Leveraging Market expertise to bring high-value tenants
+        </h2>
+
+        <p class="text-[#ACACAC] text-lg font-normal mb-10 w-full md:w-3/4 lg:w-3/4 max-w-3xl leading-relaxed">
+            Experienced commercial property matchmakers connecting the best tenants with commercial property owners listed on Fairdeal through extensive market research, shortlisting and lead generation for property selling and leasing.
+        </p>
+
+        <h3 class="text-[#3DB7AF] text-4xl font-bold tracking-tight">
+            Why List Your Property At Fairdeal?
+        </h3>
+
+        </div>
+</section>
+<!-- TEXT  END HERE -->
+
+
+<section class="py-16">
+  <div class="max-w-7xl mx-auto px-6">
+
+    <!-- Heading -->
+    <h2 class="text-3xl font-bold text-teal-600 mb-10">
+      Why List Your Property At Fairdeal?
+    </h2>
+
+    <!-- Slider Wrapper -->
+        <div class="relative">
+
+        <!-- LEFT -->
+        <button onclick="scrollLeft()" class="absolute -left-4 top-1/2 -translate-y-1/2 z-10 bg-white shadow-md p-3 rounded-full hover:bg-gray-200">
+            ←
+        </button>
+
+        <!-- SLIDER -->
+        <div id="slider" class="flex gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory px-2">
+
+            <!-- CARD -->
+            <div class="snap-center shrink-0 w-[340px] bg-white rounded-xl shadow-lg p-4 transition duration-300">
+                <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c" class="rounded-lg mb-4 w-full h-52 object-cover">
+                <h3 class="font-bold">Projected Returns</h3>
+                <p class="text-sm text-gray-600">Content...</p>
+            </div>
+
+            <!-- CENTER CARD -->
+            <div class="snap-center shrink-0 w-[340px] bg-white rounded-xl shadow-2xl p-4 border-t-4 border-orange-500 scale-105 transition duration-300">
+                <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa" class="rounded-lg mb-4 w-full h-60 object-cover">
+                <h3 class="font-bold text-lg">Property Management</h3>
+                <p class="text-sm text-gray-600">Content...</p>
+            </div>
+
+            <!-- CARD -->
+            <div class="snap-center shrink-0 w-[340px] bg-white rounded-xl shadow-lg p-4">
+                <img src="https://images.unsplash.com/photo-1492724441997-5dc865305da7" class="rounded-lg mb-4 w-full h-52 object-cover">
+                <h3 class="font-bold">Landlord Representation</h3>
+                <p class="text-sm text-gray-600">Content...</p>
+            </div>
+
+            <!-- CARD -->
+            <div class="snap-center shrink-0 w-[340px] bg-white rounded-xl shadow-lg p-4">
+                <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c" class="rounded-lg mb-4 w-full h-52 object-cover">
+                <h3 class="font-bold">Projected Returns</h3>
+                <p class="text-sm text-gray-600">Content...</p>
+            </div>
+
+        </div>
+
+        <!-- RIGHT -->
+        <button onclick="scrollRight()" class="absolute -right-4 top-1/2 -translate-y-1/2 z-10 bg-white shadow-md p-3 rounded-full hover:bg-gray-200">
+            →
+        </button>
+
+        </div>
+
+  </div>
+</section>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+  const slider = document.getElementById('slider');
+  const cards = document.querySelectorAll('#slider > div');
+
+  function getScrollAmount() {
+    const card = slider.querySelector('.snap-center');
+    const gap = 24;
+    return card.offsetWidth + gap;
+  }
+
+  window.scrollLeft = function () {
+    slider.scrollBy({
+      left: -getScrollAmount(),
+      behavior: 'smooth'
+    });
+  }
+
+  window.scrollRight = function () {
+    slider.scrollBy({
+      left: getScrollAmount(),
+      behavior: 'smooth'
+    });
+  }
+
+  // 🔥 ACTIVE CENTER CARD LOGIC
+  slider.addEventListener('scroll', () => {
+    let center = slider.scrollLeft + slider.offsetWidth / 2;
+
+    cards.forEach(card => {
+      let cardCenter = card.offsetLeft + card.offsetWidth / 2;
+
+      if (Math.abs(center - cardCenter) < card.offsetWidth / 2) {
+        card.classList.add('scale-105', 'shadow-2xl');
+      } else {
+        card.classList.remove('scale-105', 'shadow-2xl');
+      }
+    });
+  });
+
+});
+</script>
+
+{% endblock content %}

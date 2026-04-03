@@ -1,0 +1,182 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    
+<!-- HERO START HERE -->
+<section class="relative h-[65vh] w-full overflow-hidden">
+
+  <!-- Background Image -->
+  <img src="https://media.istockphoto.com/id/1219779038/photo/sale-purchase-contract-to-buy-a-house-customer-sending-money-buying-home-loan-and-giving-keys.jpg?s=612x612&w=0&k=20&c=AHEGHXoxCK3Znd5XBeFQq1HRcRl8h4wLCqAWAz_H56Q=" class="absolute inset-0 w-full h-full object-cover"  alt="Real Estate">
+
+  <!-- Dark + Green Overlay -->
+  <div class="absolute inset-0 bg-gradient-to-r from-black/70 via-green-900/60 to-transparent"></div>
+
+  <!-- Content -->
+  <div class="relative z-10 max-w-7xl mx-auto px-6 h-full flex items-center">
+    
+    <div class="text-white max-w-2xl">
+
+      <!-- Heading -->
+      <h1 class="text-4xl md:text-22xl font-bold leading-tight mb-6">
+        EXPLORE OUR RESOURCES <br>
+        FOR REAL ESTATE INSIGHTS <br>
+        AND SOLUTIONS
+      </h1>
+
+      <!-- Line -->
+      <div class="w-64 h-1 bg-white mb-6"></div>
+
+      <!-- Subtitle -->
+      <p class="text-lg md:text-xl text-gray-200 mb-8">
+        A deep-dive into commercial real estate
+      </p>
+
+    </div>
+  </div>
+
+</section>
+<!-- HERO START HERE -->
+
+<!-- SECTION START HERE -->
+<section class="bg-gray-100 py-16">
+  <div class="max-w-7xl mx-auto px-6">
+
+    <!-- Tabs -->
+    <div class="flex mb-10">
+      <button onclick="filterCards('all')" class="tab-btn active px-3 py-2 bg-orange-500 text-white">All</button>
+      <button onclick="filterCards('events')" class="tab-btn px-3 py-2 bg-gray-200 border border-gray-900">Events</button>
+      <button onclick="filterCards('blogs')" class="tab-btn px-3 py-2 bg-gray-200 border border-gray-900">Blogs</button>
+      <button onclick="filterCards('news')" class="tab-btn px-3 py-2 bg-gray-200 border border-gray-900">News</button>
+    </div>
+
+    <!-- Cards -->
+    <div id="cardContainer" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+      <!-- Card -->
+      <div class="card bg-[#EDEDED] rounded-md shadow-md overflow-hidden" data-category="blogs">
+        <img src="https://images.unsplash.com/photo-1556157382-97eda2d62296" class="h-52 w-full object-cover">
+        <div class="p-6">
+          <h3 class="font-bold">Journal Entries</h3>
+          <p class="pt-2 text-[#787171] font-xs">August 15, 2023</p>
+          <p class="pt-2 text-[#767676] font-xs">5 Ways Commercial Real Estate Can Manage Risk Exposure    When it comes to the management of commercial property risk hazards, most insurance professionals concur that risk management services should…</p>
+        </div>
+      </div>
+
+      <div class="card bg-white rounded-xl shadow-md overflow-hidden" data-category="events">
+        <img src="https://images.unsplash.com/photo-1460472178825-e5240623afd5" class="h-52 w-full object-cover">
+        <div class="p-6">
+          <h3 class="font-semibold">Risk Exposure</h3>
+        </div>
+      </div>
+
+      <div class="card bg-white rounded-xl shadow-md overflow-hidden" data-category="news">
+        <img src="https://images.unsplash.com/photo-1556740749-887f6717d7e4" class="h-52 w-full object-cover">
+        <div class="p-6">
+          <h3 class="font-semibold">Sales Revenue</h3>
+        </div>
+      </div>
+
+      <div class="card bg-white rounded-xl shadow-md overflow-hidden" data-category="blogs">
+        <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab" class="h-52 w-full object-cover">
+        <div class="p-6">
+          <h3 class="font-semibold">Real Estate Investment</h3>
+        </div>
+      </div>
+
+      <div class="card bg-white rounded-xl shadow-md overflow-hidden" data-category="events">
+        <img src="https://images.unsplash.com/photo-1559526324-4b87b5e36e44" class="h-52 w-full object-cover">
+        <div class="p-6">
+          <h3 class="font-semibold">AI in Real Estate</h3>
+        </div>
+      </div>
+
+      <div class="card bg-white rounded-xl shadow-md overflow-hidden" data-category="news">
+        <img src="https://images.unsplash.com/photo-1492724441997-5dc865305da7" class="h-52 w-full object-cover">
+        <div class="p-6">
+          <h3 class="font-semibold">Office Space Tips</h3>
+        </div>
+      </div>
+
+      <!-- EXTRA (Load More ke liye hidden initially) -->
+      <div class="card bg-white rounded-xl shadow-md overflow-hidden" data-category="blogs">
+        <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e" class="h-52 w-full object-cover">
+        <div class="p-6"><h3>Extra Blog</h3></div>
+      </div>
+
+      <div class="card bg-white rounded-xl shadow-md overflow-hidden" data-category="events">
+        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c" class="h-52 w-full object-cover">
+        <div class="p-6"><h3>Extra Event</h3></div>
+      </div>
+
+    </div>
+
+    <!-- Load More -->
+    <div class="text-center mt-12">
+      <button onclick="loadMore()" id="loadBtn" class="px-4 py-2 border border-gray-300 rounded-full hover:bg-[#0D8B80] hover:text-white transition">
+        Load More
+      </button>
+    </div>
+
+  </div>
+</section>
+<!-- SECTION ENDS HERE -->
+
+<!-- SCRIPT START HERE -->
+<script>
+    let visibleCount = 6;
+    let currentFilter = "all";
+
+    function showCards() {
+    const cards = document.querySelectorAll(".card");
+    let count = 0;
+
+    cards.forEach(card => {
+        const category = card.getAttribute("data-category");
+
+        if (currentFilter === "all" || category === currentFilter) {
+        if (count < visibleCount) {
+            card.style.display = "block";
+            count++;
+        } else {
+            card.style.display = "none";
+        }
+        } else {
+        card.style.display = "none";
+        }
+    });
+
+    // Hide button if all visible
+    const total = [...cards].filter(c => currentFilter === "all" || c.dataset.category === currentFilter).length;
+
+    document.getElementById("loadBtn").style.display =
+        visibleCount >= total ? "none" : "inline-block";
+    }
+
+    function loadMore() {
+    visibleCount += 3;
+    showCards();
+    }
+
+    function filterCards(category) {
+    currentFilter = category;
+    visibleCount = 6;
+
+    // Active tab styling
+    document.querySelectorAll(".tab-btn").forEach(btn => {
+        btn.classList.remove("bg-orange-500", "text-white");
+        btn.classList.add("bg-gray-200");
+    });
+
+    event.target.classList.add("bg-orange-500", "text-white");
+
+    showCards();
+    }
+
+    // Initial load
+    showCards();
+</script>
+<!-- SCRIPT ENDS HERE -->
+
+
+{% endblock content %}
