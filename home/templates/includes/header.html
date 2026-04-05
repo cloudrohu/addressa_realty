@@ -18,7 +18,22 @@
           <a href="/" class="text-gray-700 hover:text-gray-900 border-b-2 border-orange-500 pb-1 px-1">Home</a>
           <a href="{% url "about" %}" class="text-gray-700 hover:text-gray-900 pb-1 px-1">About</a>
           <a href="{% url "services" %}" class="text-gray-700 hover:text-gray-900 pb-1 px-1">Services</a>
-          <a href="#" class="text-gray-700 hover:text-gray-900 pb-1 px-1">Spaces</a>
+          <div class="relative inline-block text-left">
+            <button id="dropdownButton" class="text-gray-700 hover:text-gray-900 pb-1 px-1 flex items-center outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-200 rounded">
+              Spaces
+              <svg id="dropdownArrow" class="w-4 h-4 ml-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </button>
+
+            <div id="dropdownMenu" class="hidden absolute left-0 mt-2 w-48 bg-white border border-gray-200 shadow-lg z-50">
+              <div class="py-1">
+                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Corporate Space</a>
+                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Retail Space</a>
+                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Ware House Rental</a>
+              </div>
+            </div>
+          </div>
           <a href="{% url "jobs:career" %}" class="text-gray-700 hover:text-gray-900 pb-1 px-1">Career</a>
           <a href="{% url "investment_properties" %}" class="text-gray-700 hover:text-gray-900 pb-1 px-1">Investment</a>
           <a href="{% url "landlords" %}" class="text-gray-700 hover:text-gray-900 pb-1 px-1">Landlords</a>
@@ -98,4 +113,22 @@
   mobileMenuToggle.addEventListener('click', () => {
     mobileMenu.classList.toggle('hidden');
   });
+  const button = document.getElementById('dropdownButton');
+const menu = document.getElementById('dropdownMenu');
+const arrow = document.getElementById('dropdownArrow');
+
+// Click event to toggle dropdown
+button.addEventListener('click', (e) => {
+  e.stopPropagation(); // Event ko document tak pahunchne se rokta hai
+  menu.classList.toggle('hidden');
+  arrow.classList.toggle('rotate-180'); // Arrow ko rotate karega
+});
+
+// Bahar click karne par dropdown band karne ke liye
+document.addEventListener('click', (e) => {
+  if (!button.contains(e.target) && !menu.contains(e.target)) {
+    menu.classList.add('hidden');
+    arrow.classList.remove('rotate-180');
+  }
+});
 </script>

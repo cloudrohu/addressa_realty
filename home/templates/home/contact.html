@@ -67,23 +67,21 @@
             </div>
 
             <!-- INPUTS -->
-            <input type="text" name="name" placeholder="Name"  class="w-full border border-gray-300 rounded-md px-3 py-2 mb-3 focus:outline-none focus:border-[#1f9a92]">
+            <input type="text" name="name" placeholder="Name"  class="w-full border border-gray-300 px-3 py-2 mb-3 focus:outline-none focus:border-[#1f9a92]">
 
-            <input type="text" name="phone" placeholder="Phone No."  class="w-full border border-gray-300 rounded-md px-3 py-2 mb-3 focus:outline-none focus:border-[#1f9a92]">
+            <input type="text" name="phone" placeholder="Phone No."  class="w-full border border-gray-300 px-3 py-2 mb-3 focus:outline-none focus:border-[#1f9a92]">
 
-            <input type="email" name="email" placeholder="Email"  class="w-full border border-gray-300 rounded-md px-3 py-2 mb-3 focus:outline-none focus:border-[#1f9a92]">
+            <input type="email" name="email" placeholder="Email"  class="w-full border border-gray-300 px-3 py-2 mb-3 focus:outline-none focus:border-[#1f9a92]">
 
-            <textarea name="message" placeholder="Tell us more"  class="w-full border border-gray-300 rounded-md px-3 py-2 mb-3 h-24 resize-none focus:outline-none focus:border-[#1f9a92]"></textarea>
+            <textarea name="message" placeholder="Tell us more"  class="w-full border border-gray-300 px-3 py-2 mb-3 h-24 resize-none focus:outline-none focus:border-[#1f9a92]"></textarea>
 
             <!-- CONSENT -->
             <p class="text-sm text-gray-600 leading-relaxed mb-2">
               I authorize Fairdeal Realtors Pvt. Ltd. to contact me.
-              <span class="text-red-500">*</span>
+              <input class="form-checkbox h-5 w-5 text-[#1f9a92]" type="checkbox" required checked>
             </p>
 
-            <div class="flex items-center gap-2 mb-4">
-              <input type="checkbox" required>
-            </div>
+          
 
             <!-- BUTTON -->
             <button type="submit" class="bg-gray-200 text-gray-700 px-7 py-2 border border-gray-400 hover:bg-gray-300 transition">
@@ -99,22 +97,20 @@
         <h3 class="text-xl font-bold mb-4">Visit us at:</h3>
 
         <p class="mb-6 text-sm leading-relaxed">
-          Fairdeal Realtors<br>
-          11-18, Ground floor, Sahar Plaza Bonanza,<br>
-          Andheri - Kurla Rd, J B Nagar,<br>
-          Andheri East, Mumbai, Maharashtra - 400059
+          <strong>{{settings_obj.site_name}}</strong><br>
+          {{settings_obj.address|linebreaksbr}}
         </p>
 
         <h3 class="text-xl font-bold mb-2">Drop us a Mail:</h3>
 
         <p class="mb-6 flex items-center gap-2">
-          <i class="fa-solid fa-envelope"></i> enquiry@frpl.in
+          <i class="fa-solid fa-envelope"></i> {{settings_obj.email}}
         </p>
 
           <h3 class="text-xl font-bold mb-2">Don’t Hesitate to Call:</h3>
 
           <p class="flex items-center gap-2">
-          <i class="fa-solid fa-phone"></i> +91 80 80 400 500
+          <i class="fa-solid fa-phone"></i> +91 {{settings_obj.phone}}
           </p>
 
       </div>
