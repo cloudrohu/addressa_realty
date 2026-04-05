@@ -1,53 +1,49 @@
 from pyexpat.errors import messages
 from django.contrib import messages 
-from django.shortcuts import render, redirect
 from django.db.models import Min, Max, Q
 from django.db.models import Count, Q
 from django.http import HttpResponse 
 from django.shortcuts import render, redirect, get_object_or_404
-
 from properties.models import Property 
 from utility.models import Locality,PropertyType,City,Bank,ProjectAmenities
 from blog.models import Blog, Category
+import json
+from projects.models import Project
+from core.models import PocketCategory, PocketItem
 from rent.models import RentalProperty
 from .models import (
     Setting, Slider, Testimonial, About, Leadership,
     Contact_Page, FAQ, Our_Team,Why_Choose,ImpactMetric, Service, FooterLink,ContactEnquiry,Our_Industry,Our_Clients
 )
+
 from user.models import Developer 
     
-from django.shortcuts import render, redirect, get_object_or_404
-from projects.models import Project  # import your Project model.
+
 
 def index(request):
 
+    pocket_categories = PocketCategory.objects.all().prefetch_related('pocketitem_set')
+
+    pocket_data = {}
+
+    for cat in pocket_categories:
+        item = cat.pocketitem_set.first()
+
+        if item:
+            pocket_data[cat.slug] = {
+                "title": item.title,
+                "desc": item.description,
+                "image": item.image.url if item.image else ""
+            }
+
     settings_obj = Setting.objects.first()
-
     cities = City.objects.filter(level_type="CITY").order_by("name")
-
-    residential_type = PropertyType.objects.filter(
-        name__iexact="Residential", is_top_level=True
-    ).first()
-
-    commercial_type = PropertyType.objects.filter(
-        name__iexact="Commercial", is_top_level=True
-    ).first()
-
+    residential_type = PropertyType.objects.filter(name__iexact="Residential", is_top_level=True).first()
+    commercial_type = PropertyType.objects.filter(name__iexact="Commercial", is_top_level=True).first()
     residential_types = residential_type.get_descendants(include_self=True) if residential_type else PropertyType.objects.none()
     commercial_types = commercial_type.get_descendants(include_self=True) if commercial_type else PropertyType.objects.none()
-
-    new_launch_residential = Project.objects.filter(
-        active=True,
-        construction_status__iexact="New Launch",
-        propert_type__in=residential_types
-    ).order_by("-create_at")[:10]
-
-    new_launch_commercial = Project.objects.filter(
-        active=True,
-        construction_status__iexact="New Launch",
-        propert_type__in=commercial_types
-    ).order_by("-create_at")[:10]
-
+    new_launch_residential = Project.objects.filter(active=True,construction_status__iexact="New Launch",propert_type__in=residential_types).order_by("-create_at")[:10]
+    new_launch_commercial = Project.objects.filter(active=True,construction_status__iexact="New Launch",propert_type__in=commercial_types).order_by("-create_at")[:10]
     project_featured = (
         Project.objects.filter(active=True, featured_property=True)
         .annotate(
@@ -56,15 +52,12 @@ def index(request):
         )
         .order_by("-create_at")[:6]
     )
-
     possession_counts = Project.objects.filter(active=True).aggregate(
         ready_to_move=Count("id", filter=Q(construction_status__iexact="Ready To Move")),
         under_construction=Count("id", filter=Q(construction_status__iexact="Under Construction")),
         new_launch=Count("id", filter=Q(construction_status__iexact="New Launch")),
     )
-
     featured_developers = (Developer.objects.filter(featured_builder=True).annotate(project_count=Count("project", distinct=True)).filter(project_count__gt=0).order_by("-create_at"))
-
     featured_locality = (Locality.objects.filter(featured_locality=True, project__active=True).annotate(project_count=Count("project", distinct=True)).order_by("-project_count", "name")[:20])
     bank = Bank.objects.filter(home_loan_partner=True).order_by("title")
     blogs = Blog.objects.filter(is_published=True).order_by("-published_date", "-created_at")[:3]
@@ -75,20 +68,28 @@ def index(request):
     why_choose_items = Why_Choose.objects.filter(is_active=True).order_by("order")[:6]
     our_industry = Our_Industry.objects.filter(is_active=True).order_by("order")
     our_clients = Our_Clients.objects.filter(is_active=True).order_by("order")
-
-
     testimonials = Testimonial.objects.all().order_by("-id")
+    pocket_categories = PocketCategory.objects.all().prefetch_related('pocketitem_set')
+    pocket_data = {}
+
+    for cat in pocket_categories:
+        item = cat.pocketitem_set.first()
+
+        if item:
+            pocket_data[cat.slug] = {
+                "title": item.title,
+                "desc": item.description,
+                "image": item.image.url if item.image else ""
+            }
+
     faqs = FAQ.objects.all().order_by("id")
-
     current_city = project_featured.first().city.name if project_featured.exists() else "Mumbai"
-
     rental_properties = (
         RentalProperty.objects
         .select_related("city", "locality", "tenant_type", "furnishing_type")
         .filter(active=True)
         .order_by("-id")[:10]
     )
-
     return render(request, "home/index.html", {
         "settings_obj": settings_obj,
         "cities": cities,
@@ -100,6 +101,8 @@ def index(request):
         "featured_locality": featured_locality,
         "bank": bank,
         "blogs": blogs,
+        "pocket_categories": pocket_categories,
+        "pocket_data_json": json.dumps(pocket_data),
         "our_clients": our_clients,
         "about_page": about_page,
         "impact_metrics": impact_metrics,
