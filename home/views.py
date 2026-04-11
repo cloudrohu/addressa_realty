@@ -12,8 +12,9 @@ from projects.models import Project
 from core.models import PocketCategory, PocketItem
 from rent.models import RentalProperty
 from .models import (
-    Setting, Slider, Testimonial, About, Leadership,
-    Contact_Page, FAQ, Our_Team,Why_Choose,ImpactMetric, Service, FooterLink,ContactEnquiry,Our_Industry,Our_Clients
+    Setting, Slider, Testimonial, Leadership,
+    Contact_Page, FAQ, Our_Team,Why_Choose,ImpactMetric,
+    Service, FooterLink,ContactEnquiry,Our_Industry,Our_Clients, About_Us
 )
 
 from user.models import Developer 
@@ -61,7 +62,7 @@ def index(request):
     featured_locality = (Locality.objects.filter(featured_locality=True, project__active=True).annotate(project_count=Count("project", distinct=True)).order_by("-project_count", "name")[:20])
     bank = Bank.objects.filter(home_loan_partner=True).order_by("title")
     blogs = Blog.objects.filter(is_published=True).order_by("-published_date", "-created_at")[:3]
-    about_page = About.objects.filter(is_active=True).first()
+    about_page = About_Us.objects.filter(is_active=True).first()
     impact_metrics = ImpactMetric.objects.all()
     amenities = ProjectAmenities.objects.all()
     footerlink = FooterLink.objects.filter( is_active=True, parent__isnull=True).prefetch_related("children").order_by("order")
@@ -131,33 +132,10 @@ Sitemap: http://127.0.0.1:8000/sitemap.xml
     return HttpResponse(robots_content.strip(), content_type="text/plain")
 
 def about_page_view(request):
-    """
-    Display the About page with:
-    - About section (single)
-    - Leadership list
-    - Global site settings
-    """
-
-    # 🧠 Global site settings (for logo, footer, SEO)
     settings_obj = Setting.objects.filter(status="True").first()
-
-    # 🏠 Fetch active About page content (latest or first)
-    about_page = About.objects.filter(is_active=True).order_by('-created_at').first()
-
-    # 👥 Leadership team
+    about_page = About_Us.objects.filter(is_active=True).order_by('-created_at').first()
     leaders = Leadership.objects.filter(is_active=True).order_by('display_order')
-
-    # ✅ Fallback (safe defaults)
-    if not about_page:
-        about_page = {
-            "title": "About Makaan Hub",
-            "subtitle": "Delivering trust, growth and innovation since 2008.",
-            "projects_delivered": 120,
-            "happy_families": 10000,
-            "years_of_excellence": 16,
-            "awards_recognitions": 12,
-        }
-
+   
     context = {
         "about_page": about_page,
         "leaders": leaders,

@@ -127,10 +127,10 @@
 <hr class="text-white w-[26px]">
 
 <!-- ======================= FEATURE STATS ======================= -->
-<section class="relative py-20 bg-[#19A397] text-white overflow-hidden">
+<section class="stats-section relative py-20 bg-[#19A397] text-white overflow-hidden bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]">
 
   <!-- Pattern Background -->
-  <div class="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
+  <div class="absolute inset-0 opacity-10" ></div>
 
   <div class="relative max-w-7xl mx-auto px-6 text-center">
 
@@ -144,33 +144,26 @@
     </p>
 
     <!-- Stats -->
-    <div class="grid md:grid-cols-3 gap-10 mt-14">
+  <div class="grid md:grid-cols-3 gap-10 mt-14 stats-section">
 
-      <!-- Item 1 -->
-      <div>
-        <h3 class="text-5xl font-bold">15,000+</h3>
-        <p class="mt-3 text-sm tracking-widest uppercase opacity-90">
-          Properties
-        </p>
-      </div>
+    {% for metric in impact_metrics  %}
+    <div>
+      
+      <!-- Number -->
+      <h3 class="text-5xl font-bold counter"
+          data-target="{{ metric.value|cut:'+'|cut:'%'|cut:',' }}">
+          0
+      </h3>
 
-      <!-- Item 2 -->
-      <div>
-        <h3 class="text-5xl font-bold">5,000+</h3>
-        <p class="mt-3 text-sm tracking-widest uppercase opacity-90">
-          Corporate Clients
-        </p>
-      </div>
-
-      <!-- Item 3 -->
-      <div>
-        <h3 class="text-5xl font-bold">90%</h3>
-        <p class="mt-3 text-sm tracking-widest uppercase opacity-90">
-          Client Retention Rate
-        </p>
-      </div>
+      <!-- Title -->
+      <p class="mt-3 text-sm tracking-widest uppercase opacity-90">
+        {{ metric.title }}
+      </p>
 
     </div>
+    {% endfor %}
+
+  </div>
 
   </div>
 </section>
@@ -812,5 +805,50 @@
 </section>
 <!-- ===================== CONTACT US SECTION END ===================== -->
 
+<script>
+const counters = document.querySelectorAll('.counter');
+let started = false;
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting && !started) {
+      startCounting();
+      started = true;
+    }
+  });
+}, {
+  threshold: 0.5
+});
+
+observer.observe(document.querySelector('.stats-section'));
+
+function startCounting() {
+  counters.forEach(counter => {
+
+    const rawValue = counter.getAttribute('data-target');
+    const target = parseInt(rawValue);
+    let count = 0;
+    const increment = target / 100;
+
+    // Detect suffix
+    let suffix = '';
+    if (rawValue.includes('%')) suffix = '%';
+    if (rawValue.includes('+')) suffix = '+';
+
+    const updateCount = () => {
+      count += increment;
+
+      if (count < target) {
+        counter.innerText = Math.floor(count);
+        requestAnimationFrame(updateCount);
+      } else {
+        counter.innerText = target.toLocaleString() + suffix;
+      }
+    };
+
+    updateCount();
+  });
+}
+</script>
 
 </main>

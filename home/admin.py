@@ -1,9 +1,9 @@
 from django.contrib import admin
 from django.utils.html import mark_safe
 from .models import (
-    Setting, Slider, Leadership, Why_Choose,
-    About, Contact_Page, Our_Team,
-    Testimonial, FAQ, ImpactMetric, Service, FooterLink , ContactEnquiry,Our_Industry,Our_Clients
+    Setting, Slider, Leadership, Why_Choose, Contact_Page,
+    Our_Team,Testimonial, FAQ, ImpactMetric, Service, FooterLink,
+    ContactEnquiry,Our_Industry,Our_Clients,About_Us,Awards_Recognition
 )
 
 @admin.register(Setting)
@@ -121,6 +121,39 @@ class ContactEnquiryAdmin(admin.ModelAdmin):
     search_fields = ("name", "email", "phone")
     list_filter = ("created_at",) 
 
+@admin.register(About_Us)
+class About_UsAdmin(admin.ModelAdmin):
+    list_display = ("Title","Subtitle", "Description")
+
+    
+    fieldsets = (
+
+        ("Hero Section", {
+            "fields": (
+                "Hero_Title",
+                "Hero_Subtitle",
+                "Hero_Image",
+            )
+        }),
+
+        ("About Section", {
+            "fields": (
+                "Title",
+                "Subtitle",
+                "Description",
+            )
+        }),
+
+        ("Mission And Vision Section", {
+            "fields": (
+                "Mission_Title",
+                "Mission_Description",
+                "Vision_Title",
+                "Vision_Description",
+            )
+        }),
+    )
+
 
 @admin.register(Leadership)
 class LeadershipAdmin(admin.ModelAdmin):
@@ -159,93 +192,17 @@ class WhyChooseAdmin(admin.ModelAdmin):
     list_editable = ("order", "is_active")
     search_fields = ("title",)
 
-
-@admin.register(About)
-class AboutAdmin(admin.ModelAdmin):
-
-    list_display = (
-        "title",
-        "is_active",
-        "created_at",
-        "updated_at",
-    )
-
-    list_filter = ("is_active",)
-    search_fields = ("title", "meta_title", "meta_keywords")
-    readonly_fields = ("created_at", "updated_at")
-
-    fieldsets = (
-
-        ("🏠 Main About", {
-            "fields": (
-                "title",
-                "subtitle",
-                "content",
-                "image",
-            )
-        }),
-
-        ("👥 Who We Are", {
-            "fields": (
-                "who_we_are_title",
-                "who_we_are_subtitle",
-                "who_we_are_description",
-            )
-        }),
-
-        ("📊 Highlights", {
-            "fields": (
-                "projects_delivered",
-                "happy_families",
-                "years_of_excellence",
-                "awards_recognitions",
-                "highlight_icon_color",
-            )
-        }),
-
-        ("🎯 Mission & Vision", {
-            "fields": (
-                "our_mission_title",
-                "our_mission",
-                "our_vision_title",
-                "our_vision",
-            )
-        }),
-
-        ("💼 Looking To", {
-            "fields": (
-                "looking_to_title",
-                "looking_to_description",
-                "looking_to_button_text",
-                "looking_to_button_link",
-            )
-        }),
-
-        ("🌐 SEO", {
-            "fields": (
-                "meta_title",
-                "meta_description",
-                "meta_keywords",
-            )
-        }),
-
-        ("⚙️ Background & Status", {
-            "fields": (
-                "home_bg",
-                "search_bg",
-                "is_active",
-                "created_at",
-                "updated_at",
-            )
-        }),
-    )
+@admin.register(Awards_Recognition)
+class Awards_RecognitionAdmin(admin.ModelAdmin):
+    list_display = ("title", "order", "is_active")
+    list_editable = ("order", "is_active")
+    search_fields = ("title",)
 
 
 @admin.register(Contact_Page)
 class ContactPageAdmin(admin.ModelAdmin):
     list_display = ("heading", "phone", "email")
     search_fields = ("heading", "phone", "email")
-
 
 @admin.register(Our_Team)
 class OurTeamAdmin(admin.ModelAdmin):

@@ -26,7 +26,7 @@
 
     <!-- Background Image -->
     <div class="absolute inset-0">
-        <img src="https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b" alt="City Skyline" class="w-full h-full object-cover" >
+        <img src="{{about_page.Hero_Image.url}}" alt="City Skyline" class="w-full h-full object-cover" >
         <div class="absolute inset-0 bg-[#0f7c7a]/80"></div>
     </div>
 
@@ -38,20 +38,16 @@
 
         <!-- Heading -->
         <h1 class="text-5xl md:text-6xl font-extrabold leading-tight tracking-wide">
-          THE <br>
-          STORY OF <br>
-          FAIRDEAL <br>
-          REALTORS
+        {{about_page.Hero_Title|default:"About Us"}}
         </h1>
 
 
         <!-- Line -->
         <div class="mt-10 mb-6 w-[420px] h-[3px] bg-white"></div>
 
-
         <!-- Tagline -->
         <p class="text-lg font-medium text-gray-200">
-          Professional Excellence. Unprecedented Spaces. Fair Practices.
+           {{about_page.Subtitle|default:"Discover more about our company and our commitment to excellence."}}
         </p>
 
       </div>
@@ -69,37 +65,18 @@
 
         <!-- Heading -->
         <h2 class="text-4xl font-bold text-[#0f8f85] tracking-wide">
-            Explorers. Discoverers. Professionals
+             {{about_page.Title}}
         </h2>
-
 
         <!-- Sub Heading -->
         <p class="mt-4 text-orange-500 font-semibold text-lg">
-            Defining Remarkable Service & Expertise
+             {{about_page.Subtitle}}
         </p>
-
 
         <!-- Description -->
         <p class="mt-8 text-gray-700 leading-relaxed text-[17px]">
-            With 15000+ commercial properties, 75+ professionals and unmatched expertise 
-            in market research, Fairdeal offers personalized services and wider location 
-            choices for leasing and sales of commercial properties. We help you achieve 
-            your goal & fulfill your ambition.
+         {{about_page.Description | safe}}
         </p>
-
-
-        <!-- CTA -->
-        <div class="mt-10 flex justify-center items-center gap-3">
-
-            <a href="#" class="text-[#0f8f85] font-semibold hover:underline">
-                Explore With Space Expert
-            </a>
-
-            <span class="text-orange-500 text-xl">
-                →
-            </span>
-
-        </div>
 
     </div>
 
@@ -156,8 +133,8 @@
 <!-- ================= LEADERSHIP SECTION END ========== -->
 
 <!-- ================= AWARDS SECTION END ========== -->
-<div class="max-w-7xl mx-auto px-4 relative mt-3">
-    <h2 class="text-3xl md:text-4xl font-bold text-center text-[#14a89c] mb-12">
+<div class="max-w-7xl mx-auto px-4 relative mt-6">
+    <h2 class="text-3xl md:text-4xl font-bold text-center text-[#14a89c] mb-10">
         Awards & Recognition
     </h2>
 
@@ -237,10 +214,10 @@
                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
                       </svg>
                   </div>
-                  <h2 class="text-3xl font-bold text-gray-800">Our Mission</h2>
+                  <h2 class="text-3xl font-bold text-gray-800">{{about_page.Mission_Title}}</h2>
               </div>
               <p class="text-gray-600 leading-relaxed text-lg">
-                  To provide world-class real estate services by leveraging technology and deep market insights. We strive to simplify the property buying and selling process, ensuring transparency and value for every client we serve.
+                  {{about_page.Mission_Description|safe}}
               </p>
           </div>
       </div>
@@ -256,10 +233,10 @@
                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
                       </svg>
                   </div>
-                  <h2 class="text-3xl font-bold text-gray-800">Our Vision</h2>
+                  <h2 class="text-3xl font-bold text-gray-800">{{about_page.Vision_Title}}</h2>
               </div>
               <p class="text-gray-600 leading-relaxed text-lg">
-                  To become the most trusted name in the real estate industry globally, recognized for our commitment to excellence, innovation, and building sustainable communities that people are proud to call home.
+                  {{about_page.Vision_Description|safe}}
               </p>
           </div>
       </div>
